@@ -66,7 +66,7 @@ We hope Usiigaci is interesting to you and if it is useful, please cite the foll
 * TensorFlow 1.4
 * Keras 2.1.2
 
-### Single cell migration data analysis notebook
+### Single cell migration data analysis Notebook
 * Python3.4+
 * Numpy
 * Scipy
@@ -78,6 +78,11 @@ We hope Usiigaci is interesting to you and if it is useful, please cite the foll
 * (jupyter-navbar)
 
 ## How to use Usiigaci 
+### Segmentation using Mask RCNN
+
+### data verification/tracking
+
+### data analysis and visualization
 
 
 ## How to make your own training data and train them.
@@ -89,13 +94,13 @@ Load the image into ImageJ and use the freehand tool to outline each cell into i
 
 2. create instance masks.
 
-Use a pluging call LOCI, the ROI map function will index each individual ROI and output a 8bit indexed mask. 
+Use a plugin called LOCI from [University of Wisconsin](https://loci.wisc.edu), the ROI map function will index each individual ROI and output a 8bit indexed mask, save this mask as (labeled.png). 
 
-save a raw image file and annotated mask into individual folder as a set. 
+save a raw image file and annotated mask into individual folder as a set in each folder. 
 
 We used 50 sets of training data.
 45 sets are used in training and 5 sets are for validation. We trained additional 200 epochs of headers and 300 epochs on all layers based on a trained network from Matterport with MS COCO dataset. 
 
-We have found that mask-rcnn network seems to be more resilient against environmental interferences in microscopy (out of focus, strong illumination, not enough of illumination) and the performance does not drop when segmenting cells with morphology that significantly different from the cells in training set.
+We have found that Mask RCNN network seems to be more resilient against environmental interferences in microscopy (out of focus, strong illumination, low light, etc) and the performance does not drop when segmenting cells with morphology that are significantly different from the cells in training set.
 
-If the current trained network is suboptimal for you, be it poor accuracy or you have different size of images (which often need retraining of neural network), you can annotate your data by the same methods and train further see if it improves. 
+If the current trained network is suboptimal for you, be it poor accuracy or you have different size of images (which often need retraining of neural network), you can annotate your data by the same method and train further see if it improves. 
