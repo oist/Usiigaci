@@ -23,6 +23,33 @@ High accuracy label-free instance-aware segmentation is achieved by adapting the
 Cell tracking and data verification can be done in ImageJ or other tracking software such as [Lineage Mapper](https://github.com/usnistgov/Lineage-Mapper).
 
 A Jupyter Notebook and a python script is developed for automated processing and visualization of the tracked results. Step-centric and cell-centric parameters are automatically computed and saved into additional spreadsheets where users can access and reuse in statistical software or R. Automated visualization of cell migration is also generated for cell trajectory graph, box plots, etc. 
+* Cell trajectory graph
+** 2D hair ball color coded by track
+** 2D hair ball color coded by time (Imaris like)
+** 2D hair ball color coded by direction (Ibidi like)
+** 2D hair ball color coded by direction length
+** 3D hair ball with z as time 
+** scatter plot in gif
+* Automated cell migration analysis
+** computation of step centric parameters
+*** instantaneous displacement
+*** instantaneous speed
+*** turn angle
+*** direction autocorrelation
+*** Directedness
+** compuatation of cell centric parameters
+*** cumulative distance (total traveled distance)
+*** Euclidean distance
+*** net velocity
+*** end point directionality ratio
+*** orientation (cell alignment index)
+** save individual cell track data
+** save summary of each cell throughout experiment
+** save summary of ensemble at each time point
+* automated plotting of descriptive statistics
+** rose histogram of cell orientation
+** box plots, violin plots, and time series plots of cell migration parameters
+** frequency histograms
 
 We worked on Usiigaci for our work on cell electrotaxis study, and hopefully can devote to current international trend to standardize cell migration experiments. 
 
