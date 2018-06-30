@@ -81,11 +81,16 @@ We hope Usiigaci is interesting to you and if it is useful, please cite the foll
 
 
 ## How to make your own training data and train them.
-We manually annotate training data  (phase contrast image acquired on Nikon Ti-E microscope with 10X Ph-1 objective and 1.5X intermediate magnification on Hamamatsu Orca Flash V4.0 with 2x2 binning) using opensource softare Fiji ImageJ.
+We manually annotate training data  (phase contrast image acquired on Nikon Ti-E microscope with 10X Ph-1 objective and 1.5X intermediate magnification on Hamamatsu Orca Flash V4.0 with 2x2 binning) using opensource software Fiji ImageJ.
+
 1. manually outline cell into ROI
+
 Load the image into ImageJ and use the freehand tool to outline each cell into individual ROI and save into ROI manager. (a Wacom tablet or Apple ipad with apple pencil come in handy)
+
 2. create instance masks.
+
 Use a pluging call LOCI, the ROI map function will index each individual ROI and output a 8bit indexed mask. 
+
 save a raw image file and annotated mask into individual folder as a set. 
 
 We used 50 sets of training data.
