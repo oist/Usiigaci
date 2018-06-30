@@ -9,7 +9,7 @@ Hsieh-Fu Tsai<sup>1,2</sup>, Tyler Sloan<sup>3</sup>, Joanna Gajda<sup>4</sup>, 
 ![T98G microscopy](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gelectrotaxis-1.gif)
 ![T98G results from Usiigaci](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gmask-1.gif)
 
-Usiigaci in Ryukyuan language means "tracing", "透き写し"，*i.e.* drawing the outline of objects on a template. The process is essentially what we do: following the morphology and position of cells under microscope, analyze what they do upon changes in microenvironment.
+[Usiigaci](http://ryukyu-lang.lib.u-ryukyu.ac.jp/srnh/details.php?ID=SN03227) in Ryukyuan language means "tracing", "透き写し"，*i.e.* drawing the outline of objects on a template. The process is essentially what we do: following the morphology and position of cells under microscope, analyze what they do upon changes in microenvironment.
 
 Zernike's phase contrast microscopy is a brightfield microscopy technique developed by Frits Zernike and by inveting the phase contrast technique, he won the 1953 Nobel Prize for physics. Phase contrast microscopy is favored by biologists because it translates the phase difference caused by cell components into amplitude thus making these transparent structures more visible. Also, in comparison to differential interference microscopy, phase contrast microscopy works without problems with different substrates especially on plastics that contains high birefringence. 
 
