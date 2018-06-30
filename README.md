@@ -9,7 +9,7 @@ Hsieh-Fu Tsai<sup>1,2</sup>, Tyler Sloan<sup>3</sup>, Joanna Gajda<sup>4</sup>, 
 ![T98G microscopy](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gelectrotaxis-1.gif)
 ![T98G results from Usiigaci](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gmask-1.gif)
 
-Usiigaci means "tracing", "描き写し" in Ryukyuan language. 
+Usiigaci in Ryukyuan language means "tracing", "透き写し"，*i.e.* drawing the outline of objects on a template. The process is essentially what we do: following the morphology and position of cells under microscope, analyze what they do upon changes in microenvironment.
 
 Zernike's phase contrast microscopy is a brightfield microscopy technique developed by Frits Zernike and by inveting the phase contrast technique, he won the 1953 Nobel Prize for physics. Phase contrast microscopy is favored by biologists because it translates the phase difference caused by cell components into amplitude thus making these transparent structures more visible. Also, in comparison to differential interference microscopy, phase contrast microscopy works without problems with different substrates especially on plastics that contains high birefringence. 
 
@@ -83,18 +83,29 @@ We hope Usiigaci is interesting to you and if it is useful, please cite the foll
 ### data verification/tracking
 
 ### data analysis and visualization
+Currently we have finished data loading interface for three type of analyzed data
+1. ImageJ tracked multi-measure output 
 
+	each cell track of all time points followed by another
+
+2. Lineage Mapper tracked results
+
+	only cells that did not divide, fusion or lost throughout time lapse is picked up.
+
+3. Metamorph tracked data 
+	
+of all, since Lineage mapper and Metamorph only provide cell centroids data, the parameters regarding cell area, perimeter and orientation cannot be analyzed (there shouldn't be any error, just lack of data)
 
 ## How to make your own training data and train them.
 We manually annotate training data  (phase contrast image acquired on Nikon Ti-E microscope with 10X Ph-1 objective and 1.5X intermediate magnification on Hamamatsu Orca Flash V4.0 with 2x2 binning) using opensource software Fiji ImageJ.
 
 1. manually outline cell into ROI
 
-Load the image into ImageJ and use the freehand tool to outline each cell into individual ROI and save into ROI manager. (a Wacom tablet or Apple ipad with apple pencil come in handy)
+	Load the image into ImageJ and use the freehand tool to outline each cell into individual ROI and save into ROI manager. (a Wacom tablet or Apple ipad with apple pencil come in handy)
 
 2. create instance masks.
 
-Use a plugin called LOCI from [University of Wisconsin](https://loci.wisc.edu), the ROI map function will index each individual ROI and output a 8bit indexed mask, save this mask as (labeled.png). 
+	Use a plugin called LOCI from [University of Wisconsin](https://loci.wisc.edu), the ROI map function will index each individual ROI and output a 8bit indexed mask, save this mask as (labeled.png). 
 
 save a raw image file and annotated mask into individual folder as a set in each folder. 
 
