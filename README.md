@@ -17,10 +17,10 @@ However, phase contrast microscopy images are notoriously difficult to segment b
 
 Here we report Usiigaci, a semi-automated pipeline to segment, track, and visualize cell migration in phase contrast microscopy.
 
-High accuracy label-free instance-aware segmentation is achieved by adapting the mask regional convolutional neural network (Mask R-CNN), winner of Marr prize at ICCV 2017 by He *et al.*. We used the Mask R-CNN implementation by Matterport to streamline experiment. High accuracy whole cell segmentation allow us to analyze both cell migration and cell morphology which is previously difficult without fluorescence imaging. 
+High accuracy label-free instance-aware segmentation is achieved by adapting the mask regional convolutional neural network (Mask R-CNN), winner of Marr prize at ICCV 2017 by He *et al.*. We built our segmentation part on the Mask R-CNN implementation by [Matterport](https://github.com/matterport/Mask_RCNN). High accuracy whole cell segmentation allow us to analyze both cell migration and cell morphology which is previously difficult without fluorescence imaging. 
 
 
-Cell tracking and data verification can be done in ImageJ or other tracking software such as Lineage Mapper.
+Cell tracking and data verification can be done in ImageJ or other tracking software such as [Lineage Mapper](https://github.com/usnistgov/Lineage-Mapper).
 
 A Jupyter Notebook and a python script is developed for automated processing and visualization of the tracked results. Step-centric and cell-centric parameters are automatically computed and saved into additional spreadsheets where users can access and reuse in statistical software or R. Automated visualization of cell migration is also generated for cell trajectory graph, box plots, etc. 
 
