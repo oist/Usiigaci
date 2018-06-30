@@ -1,4 +1,4 @@
-# Usiigaci
+# Usiigaci: Label-free instance-aware cell tracking under phase contrast microscopy using Mask-RCNN
 Hsieh-Fu Tsai<sup>1,2</sup>, Tyler Sloan<sup>3</sup>, Joanna Gajda<sup>4</sup>, and Amy Q. Shen<sup>1</sup>
 
 <sup>1</sup>Micro/Bio/Nanofluidics Unit, Okinawa Institute of Science and Technology Graduate University, Okinawa Japan
@@ -6,8 +6,6 @@ Hsieh-Fu Tsai<sup>1,2</sup>, Tyler Sloan<sup>3</sup>, Joanna Gajda<sup>4</sup>, 
 <sup>3</sup>Quorumetrix Solutions, Canada
 <sup>4</sup>affil
 
-
-Label-free instance-aware cell tracking under phase contrast microscopy using Mask-RCNN
 
 Usiigaci means "tracing", "描き写し" in Ryukyuan language. 
 
@@ -32,8 +30,23 @@ We hope Usiigaci is interesting to you and if it is useful, please cite the foll
 
 
 ## Dependencies
+### Mask-RCNN
+* Kubuntu 16.04 Linux
+* NVIDIA graphics card with compute capability > 5.0
+* CUDA 9.1
+* TensorFlow 1.4
+* Keras 2.1.2
 
-
+### Single cell migration data analysis notebook
+* Python3.4+
+* Numpy
+* Scipy
+* Pandas
+* Matplotlib
+* seaborn
+* imageio
+* read_roi
+* (jupyter-navbar)
 
 ## How to use Usiigaci 
 
