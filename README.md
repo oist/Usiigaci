@@ -6,8 +6,8 @@ Hsieh-Fu Tsai<sup>1,2</sup>, Tyler Sloan<sup>3</sup>, Joanna Gajda<sup>4</sup>, 
 <sup>3</sup>Quorumetrix Solutions, Canada
 <sup>4</sup>affil
 
-![T98G microscopy](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gelectrotaxis.gif){:height="300px" width="300px"}
-![T98G results from Usiigaci](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gmask.gif){:height="300px" width="300px"}
+![T98G microscopy](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gelectrotaxis-1.gif)
+![T98G results from Usiigaci](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gmask-1.gif)
 
 Usiigaci means "tracing", "描き写し" in Ryukyuan language. 
 
