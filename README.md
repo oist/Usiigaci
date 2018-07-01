@@ -11,7 +11,7 @@ Hsieh-Fu Tsai<sup>1,2</sup>, Tyler Sloan<sup>3</sup>, Joanna Gajda<sup>4</sup>, 
 
 [Usiigaci](http://ryukyu-lang.lib.u-ryukyu.ac.jp/srnh/details.php?ID=SN03227) in Ryukyuan language means "tracing", "透き写し"，*i.e.* drawing the outline of objects on a template. The process is essentially what we do: following the morphology and position of cells under microscope, analyze what they do upon changes in microenvironment.
 
-Zernike's phase contrast microscopy is a brightfield microscopy technique developed by Frits Zernike and by inveting the phase contrast technique, he won the 1953 Nobel Prize for physics. Phase contrast microscopy is favored by biologists because it translates the phase difference caused by cell components into amplitude thus making these transparent structures more visible. Also, in comparison to differential interference microscopy, phase contrast microscopy works without problems with different substrates especially on plastics that contains high birefringence. 
+Zernike's phase contrast microscopy is a brightfield microscopy technique developed by Frits Zernike and by inventing the phase contrast technique, he won the 1953 Nobel Prize for physics. Phase contrast microscopy is favored by biologists because it translates the phase difference caused by cell components into amplitude thus making these transparent structures more visible. Also, in comparison to differential interference microscopy, phase contrast microscopy works without problems with different substrates especially on plastics that contains high birefringence. 
 
 However, phase contrast microscopy images are notoriously difficult to segment by conventional computer vision methods. Accurate single cell tracking is the hallmark of cell migration microscopy imaging. Accurate whole cell outline segmentation and resolution of cells that contact each other is essential for accurate cell migration analysis. 
 
@@ -56,9 +56,15 @@ We worked on Usiigaci for our work on cell electrotaxis study, and hopefully can
 Usiigaci is released under MIT License. 
 
 We hope Usiigaci is interesting to you and if it is useful, please cite the following paper.
-
+```
+Hsieh-Fu Tsai, Tyler Sloan, Joanna Gajda, and Amy Q. Shen, softwareX, inprep
+```
 
 ## Dependencies
+### hardware
+A computer with CUDA-ready GPU should be able to do.
+We have built all the testing and development on an Alienware 15 with GTX1070 8GB laptop.
+
 ### Mask-RCNN
 * Kubuntu 16.04 Linux
 * NVIDIA graphics card with compute capability > 5.0
