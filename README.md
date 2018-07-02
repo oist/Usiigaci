@@ -61,7 +61,7 @@ Hsieh-Fu Tsai, Tyler Sloan, Joanna Gajda, and Amy Q. Shen, softwareX, inprep
 ```
 
 ## Dependencies
-### hardware
+### Hardware
 A computer with CUDA-ready GPU should be able to do.
 We have built all the testing and development on an Alienware 15 with GTX1070 8GB laptop.
 
@@ -85,8 +85,34 @@ We have built all the testing and development on an Alienware 15 with GTX1070 8G
 
 ## How to use Usiigaci 
 ### Segmentation using Mask RCNN
+The inference script "/Mask-RCNN/Inference.py" is the script you need to run prediction on images.
+1. (organize you image data)
+	assume you're using NIS element, you can export the images by xy, t, and c if you have one.
+	use the NIS_export_organize sorting script to the images so that for each xy dimension, all the time step images are organized in a folder.
+
+2. edit the inference.py script
+	line 288 change the path to the folder you want to run inference. 
+		The script will automatically search all th nested directories of this folder and run inference on each of them.
+	line 292:294 change the path to the trained weights. 
+		you can specify multiple weights from different training, the inference code will run predictions using each model weight and average them. This costs more time to do inference. But since all neural networks can have false negatives (blinking), this can alleviate the false result frequency.
+	line 296 adjust the model_list by the model_path you define.
+
+3. run the inference.py script.
+	```
+	python inference.py
+	```
+	the keras and tensorflow should take care of looking for the main GPU and run the inference. 
+
+4. instance-aware mask images will be right next to the folder you defined and you can use it to run in Lineage Mapper or etc.
 
 ### Data verification/tracking
+1. Load the images in ImageJ as a stack, you can verify the data and do manual tracking.
+2. for ease of tracking, you can use an ImageJ plugin developed by Emanuele Martini. 
+	1. threshold the instance-aware stack to binary masks.
+	2. run the plugin, you can find one target cells on the first slice with magic wand tool and click ok, based on overlapping, the plugin will find the target ROIs in the rest of the slices and add them into ROI manager.
+	3. in ROI manager, you can edit each ROI and click "multimeasure" to output measured results for further analysis.
+
+3. Alternatively, you can load the indexed 8 bit masks files into Lineage Mapper, or Metamorph which the tracking can be eaily done.
 
 ### Data analysis and visualization
 Currently we have finished data loading interface for three type of analyzed data
