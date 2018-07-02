@@ -207,12 +207,14 @@ def main():
     # out_dir = args['--out-dir']
     # weights_path = args['--weights']
     sys.stdout = Logger()
-
+    #define the path to the train directory containing instance_ids.png and raw.tif
     train_dir = "/home/davince/Dropbox (OIST)/Deeplearning_system/Mask-RCNN_OIST/train/"
+    #define the path to the validation directory containing instance_ids.png and raw.tif
     val_dir = "/home/davince/Dropbox (OIST)/Deeplearning_system/Mask-RCNN_OIST/val/"
+    #define the path to the directory that output trained weights should be saved
     out_dir = "/home/davince/Dropbox (OIST)/Deeplearning_system/Mask-RCNN_OIST/trainednetwork/"
+    #define the path of pretrained weight to start from
     weights_path = '/home/davince/Dropbox (OIST)/Deeplearning_system/Mask-RCNN_OIST/trainednetwork/mask_rcnn_nuclei_new.h5'
-    #weights_path = '/home/davince/Dropbox (OIST)/Deeplearning_system/Mask-RCNN_OIST/trainednetwork/nuclei20180417T1145/mask_rcnn_nuclei_0149.h5'
 
     print('> Training on data: ', train_dir)
     print('> Saving results to: ', out_dir)

@@ -1,5 +1,5 @@
 """
-Mask-RCNN detection script for cell nuclei
+Mask-RCNN detection script for cell
 
 Input format
 > data_dir: Directory with structure as follows:
@@ -31,7 +31,7 @@ import numpy as np
 import cv2
 from tqdm import tqdm
 
-from train import NucleiConfig
+from train import cellConfig
 from mrcnn import utils
 from mrcnn import model as modellib
 import time
@@ -69,19 +69,19 @@ class ImageDataset(utils.Dataset):
         :param dataset_dir: string, path to dataset directory.
         :return: None
         """
-        self.add_class("nuclei", 1, "nuclei")
+        self.add_class("cell", 1, "cell")
 
         image_ids = os.listdir(dataset_dir)
 
         for image_id in image_ids:
             self.add_image(
-                'nuclei',
+                'cell',
                 image_id=os.path.splitext(image_id)[0],
                 path=os.path.join(dataset_dir, image_id)
             )
 
 
-class NucleiInferenceConfig(NucleiConfig):
+class CellInferenceConfig(cellConfig):
     # Set batch size to 1 to run one image at a time
     GPU_COUNT = 1
     IMAGES_PER_GPU = 1
@@ -310,7 +310,7 @@ for (count, folder), files in groupby(all_files, itemgetter(0, 1)):
 	sub_directory.append(folder)
 #print(sub_directory)
 
-config = NucleiInferenceConfig()
+config = CellInferenceConfig()
 #model = modellib.MaskRCNN(mode="inference", config=config, model_dir=out_dir)
 model = modellib.MaskRCNN(mode="inference", config=config, model_dir=data_dir)
 #print('> Loading model from: ', model_path)

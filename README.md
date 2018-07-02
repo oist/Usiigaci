@@ -86,9 +86,9 @@ We have built all the testing and development on an Alienware 15 with GTX1070 8G
 ## How to use Usiigaci 
 ### Segmentation using Mask RCNN
 
-### data verification/tracking
+### Data verification/tracking
 
-### data analysis and visualization
+### Data analysis and visualization
 Currently we have finished data loading interface for three type of analyzed data
 1. ImageJ tracked multi-measure output 
 
@@ -100,7 +100,7 @@ Currently we have finished data loading interface for three type of analyzed dat
 
 3. Metamorph tracked data 
 	
-of all, since Lineage mapper and Metamorph only provide cell centroids data, the parameters regarding cell area, perimeter and orientation cannot be analyzed (there shouldn't be any error, just lack of data)
+of all, since Lineage mapper and Metamorph only provide cell centroids data, the parameters regarding cell area, perimeter and orientation cannot be analyzed (there shouldn't be any error, just lack of data during data analysis and visualization in the notebook)
 
 ## How to make your own training data and train them.
 We manually annotate training data  (phase contrast image acquired on Nikon Ti-E microscope with 10X Ph-1 objective and 1.5X intermediate magnification on Hamamatsu Orca Flash V4.0 with 2x2 binning) using opensource software Fiji ImageJ.
@@ -113,7 +113,7 @@ We manually annotate training data  (phase contrast image acquired on Nikon Ti-E
 
 	Use a plugin called LOCI from [University of Wisconsin](https://loci.wisc.edu), the ROI map function will index each individual ROI and output a 8bit indexed mask, save this mask as (labeled.png). 
 
-save a raw image file and annotated mask into individual folder as a set in each folder. 
+	save a raw image file and annotated mask into individual folder as a set in each folder. 
 
 3. run the preprocess_data.py to change the colored into gray scale 8 bit image. 
 	Alternatively, if you already have the 8 bit gray scale image with each cell having its index. you're good to go by naming them as "instance_ids.png"
