@@ -87,10 +87,12 @@ We have built all the testing and development on an Alienware 15 with GTX1070 8G
 ### Segmentation using Mask RCNN
 The inference script "/Mask-RCNN/Inference.py" is the script you need to run prediction on images.
 1. (organize you image data)
-	assume you're using NIS element, you can export the images by xy, t, and c if you have one.
+
+	assuming you're using NIS element, you can export the images by xy, t, and c if you have one.
 	use the NIS_export_organize sorting script to the images so that for each xy dimension, all the time step images are organized in a folder.
 
 2. edit the inference.py script
+
 	line 288 change the path to the folder you want to run inference. 
 		The script will automatically search all th nested directories of this folder and run inference on each of them.
 	line 292:294 change the path to the trained weights. 
@@ -98,12 +100,13 @@ The inference script "/Mask-RCNN/Inference.py" is the script you need to run pre
 	line 296 adjust the model_list by the model_path you define.
 
 3. run the inference.py script.
+
 	```
 	python inference.py
 	```
 	the keras and tensorflow should take care of looking for the main GPU and run the inference. 
 
-4. instance-aware mask images will be right next to the folder you defined and you can use it to run in Lineage Mapper or etc.
+4. instance-aware mask images will saved in a mask folder be right next to the folder you defined and you can use it to run in Lineage Mapper or etc.
 
 ### Data verification/tracking
 1. Load the images in ImageJ as a stack, you can verify the data and do manual tracking.
