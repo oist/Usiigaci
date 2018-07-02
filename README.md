@@ -9,7 +9,7 @@ Hsieh-Fu Tsai<sup>1,2</sup>, Tyler Sloan<sup>3</sup>, Joanna Gajda<sup>4</sup>, 
 ![T98G microscopy](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gelectrotaxis-1.gif)
 ![T98G results from Usiigaci](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gmask-1.gif)
 
-[Usiigaci](http://ryukyu-lang.lib.u-ryukyu.ac.jp/srnh/details.php?ID=SN03227) in Ryukyuan language means "tracing", "透き写し"，*i.e.* drawing the outline of objects on a template. The process is essentially what we do: following the morphology and position of cells under microscope, analyze what they do upon changes in microenvironment.
+[Usiigaci](http://ryukyu-lang.lib.u-ryukyu.ac.jp/srnh/details.php?ID=SN03227) in Ryukyuan language means "tracing", "透き写し"，*i.e.* drawing the outline of objects on a template. The process is essentially what we do: following the morphology and position of cells under microscope, analyze what they do upon changes in microenvironment. It's just bloody tedious to do this by human, and now we developed a pipeline using the famous Mask-RCNN to do this for us. Letting us not only track objects by their position but also how their morphology changes through time. 
 
 Zernike's phase contrast microscopy is a brightfield microscopy technique developed by Frits Zernike and by inventing the phase contrast technique, he won the 1953 Nobel Prize for physics. Phase contrast microscopy is favored by biologists because it translates the phase difference caused by cell components into amplitude thus making these transparent structures more visible. Also, in comparison to differential interference microscopy, phase contrast microscopy works without problems with different substrates especially on plastics that contains high birefringence. 
 
@@ -115,8 +115,14 @@ We manually annotate training data  (phase contrast image acquired on Nikon Ti-E
 
 save a raw image file and annotated mask into individual folder as a set in each folder. 
 
-We used 50 sets of training data.
+3. run the preprocess_data.py to change the colored into gray scale 8 bit image. 
+	Alternatively, if you already have the 8 bit gray scale image with each cell having its index. you're good to go by naming them as "instance_ids.png"
+
+
+We used 50 sets of training data. you can find the training data we made in the train and val folder.
 45 sets are used in training and 5 sets are for validation. We trained additional 200 epochs of headers and 300 epochs on all layers based on a trained network from Matterport with MS COCO dataset. 
+
+The original ROIs used in the ImageJ also contains in the folder. You can use this to train on different neural network architect or on the [DeepCell](https://github.com/vanvalen/deepcell-tf)
 
 We have found that Mask RCNN network seems to be more resilient against environmental interferences in microscopy (out of focus, strong illumination, low light, etc) and the performance does not drop when segmenting cells with morphology that are significantly different from the cells in training set.
 
