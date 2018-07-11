@@ -55,7 +55,7 @@ We worked on Usiigaci for our work on cell electrotaxis study, and hopefully can
 
 Usiigaci is released under MIT License. 
 
-We hope Usiigaci is interesting to you and if it is useful, please cite the following paper.
+We hope Usiigaci is interesting to you and if it is useful for your research, please cite the following paper.
 ```
 Hsieh-Fu Tsai, Tyler Sloan, Joanna Gajda, and Amy Q. Shen, softwareX, inprep
 ```
@@ -110,10 +110,10 @@ The inference script "/Mask-RCNN/Inference.py" is the script you need to run pre
 
 ### Data verification/tracking
 1. Load the images in ImageJ as a stack, you can verify the data and do manual tracking.
-2. for ease of tracking, you can use an ImageJ plugin developed by Emanuele Martini. 
+2. for ease of tracking, you can use an ImageJ plugin developed by [Emanuele Martini](https://bitbucket.org/e_martini/fiji_plugins/overview). 
 	1. threshold the instance-aware stack to binary masks.
 	2. run the plugin, you can find one target cells on the first slice with magic wand tool and click ok, based on overlapping, the plugin will find the target ROIs in the rest of the slices and add them into ROI manager.
-	3. in ROI manager, you can edit each ROI and click "multimeasure" to output measured results for further analysis.
+	3. in ROI manager, you can edit each ROI and click "Measure" to output measured results for further analysis.
 
 3. Alternatively, you can load the indexed 8 bit masks files into Lineage Mapper, or Metamorph which the tracking can be eaily done.
 
