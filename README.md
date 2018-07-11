@@ -89,15 +89,21 @@ The inference script "/Mask-RCNN/Inference.py" is the script you need to run pre
 1. (organize you image data)
 
 	assuming you're using NIS element, you can export the images by xy, t, and c if you have one.
+
 	use the NIS_export_organize sorting script to the images so that for each xy dimension, all the time step images are organized in a folder.
 
 2. edit the inference.py script
 
 	line 288 change the path to the folder you want to run inference. 
+
 		The script will automatically search all th nested directories of this folder and run inference on each of them.
+
 	line 292:294 change the path to the trained weights. 
+	
 		you can specify multiple weights from different training, the inference code will run predictions using each model weight and average them. This costs more time to do inference. But since all neural networks can have false negatives (blinking), this can alleviate the false result frequency.
+
 	line 296 adjust the model_list by the model_path you define.
+
 
 3. run the inference.py script.
 
