@@ -96,11 +96,11 @@ The inference script "/Mask-RCNN/Inference.py" is the script you need to run pre
 
 	line 288 change the path to the folder you want to run inference. 
 
-		The script will automatically search all th nested directories of this folder and run inference on each of them.
+	The script will automatically search all th nested directories of this folder and run inference on each of them.
 
 	line 292:294 change the path to the trained weights. 
-	
-		you can specify multiple weights from different training, the inference code will run predictions using each model weight and average them. This costs more time to do inference. But since all neural networks can have false negatives (blinking), this can alleviate the false result frequency.
+
+	you can specify multiple weights from different training, the inference code will run predictions using each model weight and average them. This costs more time to do inference. But since all neural networks can have false negatives (blinking), this can alleviate the false result frequency.
 
 	line 296 adjust the model_list by the model_path you define.
 
