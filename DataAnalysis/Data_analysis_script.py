@@ -10,6 +10,9 @@ the script can process cell tracking data from ImageJ, Lineage mapper, or Imaris
 If you use this code, please cite the following paper:
 Hsieh-Fu Tsai, Tyler Sloan, Joanna Gajda, Amy Shen, Usiigaci: Label-free instance-aware cell tracking in phase contrast microscopy using Mask R-CNN.
 
+Version:
+v1.0 2018.07.14
+
 License:
 This script is released under MIT license
 Copyright <2018> <Okinawa Institute of Science and Technology Graduate University>
