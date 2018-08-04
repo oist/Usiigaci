@@ -1,10 +1,11 @@
-# Usiigaci: Label-free instance-aware cell tracking under phase contrast microscopy using Mask-RCNN
-Hsieh-Fu Tsai<sup>1,2</sup>, Tyler Sloan<sup>3</sup>, Joanna Gajda<sup>4</sup>, and Amy Q. Shen<sup>1</sup>
+# Usiigaci: Label-free instance-aware cell tracking under phase contrast microscopy using Mask R-CNN
+Hsieh-Fu Tsai<sup>1,2</sup>, Tyler Sloan<sup>3</sup>, Joanna Gajda<sup>4</sup>, Andrei Rares<sup>5</sup>, and Amy Q. Shen<sup>1</sup>
 
 <sup>1</sup>Micro/Bio/Nanofluidics Unit, Okinawa Institute of Science and Technology Graduate University, Okinawa Japan
 <sup>2</sup>Research Fellow of Japan Society of Promotion for Science
 <sup>3</sup>Quorumetrix Solutions, Canada
 <sup>4</sup>affil
+<sup>5</sup>affil
 
 ![T98G microscopy](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gelectrotaxis-1.gif)
 ![T98G results from Usiigaci](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gmask-3.gif)
@@ -65,12 +66,20 @@ Hsieh-Fu Tsai, Tyler Sloan, Joanna Gajda, and Amy Q. Shen, softwareX, inprep
 A computer with CUDA-ready GPU should be able to do.
 We have built all the testing and development on an Alienware 15 with GTX1070 8GB laptop.
 
-### Mask-RCNN
+### Mask R-CNN
 * Kubuntu 16.04 Linux
 * NVIDIA graphics card with compute capability > 5.0
 * CUDA 9.1
 * TensorFlow 1.4
 * Keras 2.1.2
+
+### Python tracking GUI
+* trackpy
+* scikit-image
+* Numpy
+* Pandas
+* Matplotlib
+* PIMS
 
 ### Single cell migration data analysis Notebook
 * Python3.4+
@@ -121,7 +130,7 @@ The inference script "/Mask-RCNN/Inference.py" is the script you need to run pre
 	2. run the plugin, you can find one target cells on the first slice with magic wand tool and click ok, based on overlapping, the plugin will find the target ROIs in the rest of the slices and add them into ROI manager.
 	3. in ROI manager, you can edit each ROI and click "Measure" to output measured results for further analysis.
 
-3. A python tracking software is developed using the [trackpy](hhttps://soft-matter.github.io/trackpy/v0.3.2/) developed by Dr. Andrei Rares. 
+3. A python tracking software is developed using the [trackpy](hhttps://soft-matter.github.io/trackpy/v0.3.2/) by Dr. Andrei Rares. 
 	1. The segmented masks from Mask R-CNN are loaded and tracked using trackpy.
 	2. The tracking results that are suboptimal from segmentation error were repaired. 
 	3. A GUI is used to allow user to double check the results and deleted bad results.
@@ -130,16 +139,20 @@ The inference script "/Mask-RCNN/Inference.py" is the script you need to run pre
 3. Alternatively, you can load the indexed 8 bit masks files into Lineage Mapper, or Metamorph which the tracking can be eaily done.
 
 ### Data analysis and visualization
-Currently we have finished data loading interface for three type of analyzed data
+Currently we have finished data loading interface for four types of analyzed data
 1. ImageJ tracked multi-measure output 
 
 	each cell track of all time points followed by another
 
-2. Lineage Mapper tracked results
+2. trackpy output data by our python tracker
+	
+	each cell track of all time points followed by another. Users can use the GUI to delete bad tracks for data verification.
+
+3. Lineage Mapper tracked results
 
 	only cells that did not divide, fusion or lost throughout time lapse is picked up.
 
-3. Metamorph tracked data 
+4. Metamorph tracked data 
 	
 of all, since Lineage mapper and Metamorph only provide cell centroids data, the parameters regarding cell area, perimeter and orientation cannot be analyzed (there shouldn't be any error, just lack of data during data analysis and visualization in the notebook)
 
