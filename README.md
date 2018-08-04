@@ -7,7 +7,7 @@ Hsieh-Fu Tsai<sup>1,2</sup>, Tyler Sloan<sup>3</sup>, Joanna Gajda<sup>4</sup>, 
 <sup>4</sup>affil
 
 ![T98G microscopy](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gelectrotaxis-1.gif)
-![T98G results from Usiigaci](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gmask-1.gif)
+![T98G results from Usiigaci](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gmask-2.gif)
 
 [Usiigaci](http://ryukyu-lang.lib.u-ryukyu.ac.jp/srnh/details.php?ID=SN03227) in Ryukyuan language means "tracing", "透き写し"，*i.e.* drawing the outline of objects on a template. The process is essentially what we do: following the morphology and position of cells under microscope, analyze what they do upon changes in microenvironment. It's just bloody tedious to do this by human, and now we developed a pipeline using the famous Mask-RCNN to do this for us. Letting us not only track objects by their position but also how their morphology changes through time. 
 
@@ -121,6 +121,12 @@ The inference script "/Mask-RCNN/Inference.py" is the script you need to run pre
 	2. run the plugin, you can find one target cells on the first slice with magic wand tool and click ok, based on overlapping, the plugin will find the target ROIs in the rest of the slices and add them into ROI manager.
 	3. in ROI manager, you can edit each ROI and click "Measure" to output measured results for further analysis.
 
+3. A python tracking software is developed using the [trackpy](hhttps://soft-matter.github.io/trackpy/v0.3.2/) developed by Dr. Andrei Rares. 
+	1. The segmented masks from Mask R-CNN are loaded and tracked using trackpy.
+	2. The tracking results that are suboptimal from segmentation error were repaired. 
+	3. A GUI is used to allow user to double check the results and deleted bad results.
+	4. The XY coordinate, area, perimeter, and orientation is extracted using scikit-image regionprops methods. 
+	
 3. Alternatively, you can load the indexed 8 bit masks files into Lineage Mapper, or Metamorph which the tracking can be eaily done.
 
 ### Data analysis and visualization
