@@ -147,11 +147,11 @@ The inference script "/Mask-RCNN/Inference.py" is the script you need to run on 
 #### Tracking using Usiigaci tracker
 
 A python tracking software is developed using the [trackpy](hhttps://soft-matter.github.io/trackpy/v0.3.2/) by Dr. Andrei Rares. 
-	1. The segmented masks from Mask R-CNN are loaded and tracked using trackpy.
-	2. The tracking results that are suboptimal from segmentation error were repaired. 
-	3. A GUI is used to allow user to double check the results and deleted bad tracks if they exists.
-	4. The XY coordinate, area, perimeter, and angle (in radians) is extracted using scikit-image regionprops methods.
-	5. the results are saved into "tracks.csv" files and tracked images as well as movies are saved also. 
+1. The segmented masks from Mask R-CNN are loaded and tracked using trackpy.
+2. The tracking results that are suboptimal from segmentation error were repaired. 
+3. A GUI is used to allow user to double check the results and deleted bad tracks if they exists.
+4. The XY coordinate, area, perimeter, and angle (in radians) is extracted using scikit-image regionprops methods.
+5. the results are saved into "tracks.csv" files and tracked images as well as movies are saved also. 
 
 #### Tracking using other tracking software
 
@@ -202,6 +202,6 @@ We used 50 sets of training data. you can find the training data we made in the 
 
 The original ROIs used in the ImageJ also contains in the folder. You can use this to train on different neural network architect or on the [DeepCell](https://github.com/vanvalen/deepcell-tf)
 
-We have found that Mask RCNN network seems to be more resilient against environmental interferences in microscopy (out of focus, strong illumination, low light, etc) and the performance does not drop when segmenting cells with morphology that are significantly different from the cells in training set.
+We have found that Mask R-CNN network seems to be more resilient against environmental interferences in microscopy (out of focus, strong illumination, low light, etc) and the performance does not drop when segmenting cells with morphology that are significantly different from the cells in training set.
 
-If the current trained network is suboptimal for you, be it poor accuracy or you have different size of images (which often need retraining of neural network), you can annotate your data by the same method and train further see if it improves. 
+If the current trained network is suboptimal for you, be it poor accuracy or you have different size of images (which often need retraining of neural network), you can annotate your data by the same method and train further to see if it improves. 
