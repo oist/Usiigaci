@@ -289,9 +289,9 @@ data_dir = '/media/davince/DATA_HD/Cell electrotaxis/20180603similarity_analysis
 #model_path = '/home/davince/Dropbox (OIST)/Deeplearning_system/Mask-RCNN_OIST/trainednetwork/mask_rcnn_nuclei_res101.h5'
 
 #define the model weight paths
-model_path_1 = '/home/davince/Dropbox (OIST)/Deeplearning_system/Mask-RCNN_OIST/trainednetwork/trained/mask_rcnn_nuclei_0521_0.2089.h5'
-model_path_2 = '/home/davince/Dropbox (OIST)/Deeplearning_system/Mask-RCNN_OIST/trainednetwork/trained/mask_rcnn_nuclei_res101.h5'
-model_path_3 = '/home/davince/Dropbox (OIST)/Deeplearning_system/Mask-RCNN_OIST/trainednetwork/mask_rcnn_nuclei_0750.h5'
+model_path_1 = 'trained_network/Usiigaci_1.h5'
+model_path_2 = 'trained_network/Usiigaci_2.h5'
+model_path_3 = 'trained_network/Usiigaci_3.h5'
 #model_list=[model_path_3]
 model_list = [model_path_1, model_path_2, model_path_3]
 #model_list = [model_path_1, model_path_2]

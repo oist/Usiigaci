@@ -1,10 +1,10 @@
 # Usiigaci: Label-free instance-aware cell tracking under phase contrast microscopy using Mask R-CNN
-Hsieh-Fu Tsai<sup>1,2</sup>, Tyler Sloan<sup>3</sup>, Joanna Gajda<sup>4</sup>, Andrei Rares<sup>5</sup>, and Amy Q. Shen<sup>1</sup>
+Hsieh-Fu Tsai<sup>1,2</sup>, Joanna Gajda<sup>3</sup>, Tyler Sloan<sup>4</sup>, Andrei Rares<sup>5</sup>, and Amy Q. Shen<sup>1</sup>
 
 <sup>1</sup>Micro/Bio/Nanofluidics Unit, Okinawa Institute of Science and Technology Graduate University, Okinawa Japan
 <sup>2</sup>Research Fellow of Japan Society of Promotion for Science
-<sup>3</sup>Quorumetrix Solutions, Canada
-<sup>4</sup>affil
+<sup>3</sup>
+<sup>4</sup>Quorumetrix Solutions, Canada
 <sup>5</sup>affil
 
 ![T98G microscopy](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gelectrotaxis-1.gif)
@@ -95,6 +95,16 @@ We have built all the testing and development on an Alienware 15 laptop with GTX
 
 ## How to use Usiigaci 
 ### Segmentation using Mask R-CNN
+
+1. Download the trained weights
+	
+	Due to the file size limit of Github, please download the three weights we used for our phase contrast microscope in the [Dropbox folder](https://www.dropbox.com/sh/3eldgvytfchm9gr/AAB6vzPaEf8buk81IRVNClUEa?dl=0).
+
+	Note: These are trained for phase contrast images on Nikon Ti-E with 10X phase contrast objective, 1.5X intermediate magnification with a Hamamatsu Orca Flash V4.0 sCMOS camera at 1024x1022 size. We have found Mask R-CNN to be more resilient toward environmental changes, but if the results from pretrained weights are suboptimal, you can see the last section to train the network with your own data.
+
+
+
+
 The inference script "/Mask-RCNN/Inference.py" is the script you need to run on images for generating corresponding masks. 
 1. (organize you image data)
 
