@@ -14,16 +14,16 @@ Hsieh-Fu Tsai<sup>1,2</sup>, Tyler Sloan<sup>3</sup>, Joanna Gajda<sup>4</sup>, 
 
 Zernike's phase contrast microscopy is a brightfield microscopy technique developed by Frits Zernike and by inventing the phase contrast technique, he won the 1953 Nobel Prize for physics. Phase contrast microscopy is favored by biologists because it translates the phase difference caused by cell components into amplitude thus making these transparent structures more visible. Also, in comparison to differential interference microscopy, phase contrast microscopy works without problems with different substrates especially on plastics that contains high birefringence. 
 
-However, phase contrast microscopy images are notoriously difficult to segment by conventional computer vision methods. Accurate single cell tracking is the hallmark of cell migration microscopy imaging. Accurate whole cell outline segmentation and resolution of cells that contact each other is essential for accurate cell migration analysis. 
+However, phase contrast microscopy images are notoriously difficult to segment by conventional computer vision methods. Accurate whole cell outline segmentation and resolution of cells that contact each other is essential as first step for accurate cell identification in automated microscopy. Tracking and visualization of the cellular dynamics based on the segmentations help us understand and quantitative analyze cellular dynamics. 
 
-Here we report Usiigaci, a semi-automated pipeline to segment, track, and visualize cell migration in phase contrast microscopy.
+We report Usiigaci, a semi-automated pipeline to segment, track, and visualize cell migration in phase contrast microscopy.
 
 High accuracy label-free instance-aware segmentation is achieved by adapting the mask regional convolutional neural network (Mask R-CNN), winner of Marr prize at ICCV 2017 by He *et al.*. We built our segmentation part on the Mask R-CNN implementation by [Matterport](https://github.com/matterport/Mask_RCNN). High accuracy whole cell segmentation allow us to analyze both cell migration and cell morphology which is previously difficult without fluorescence imaging. 
 
+Cell tracking and data verification can be done in ImageJ, other existin tracking software such as [Lineage Mapper](https://github.com/usnistgov/Lineage-Mapper), or we have also developed a tracker based on open-source [trackpy](https://soft-matter.github.io/trackpy/v0.3.2/) library and a GUI with the tracker. The cell tracks can be verified manually in the tracker GUI and bad tracks can be deleted by users. 
 
-Cell tracking and data verification can be done in ImageJ or other tracking software such as [Lineage Mapper](https://github.com/usnistgov/Lineage-Mapper).
+A Jupyter Notebook and the corresponding python script are developed for automated processing and visualization of the tracked results. Step-centric and cell-centric parameters are automatically computed and saved into additional spreadsheets where users can access and reuse in statistical software or R. Automated visualization of cell migration is also generated for cell trajectory graphs, box plots, etc. 
 
-A Jupyter Notebook and a python script is developed for automated processing and visualization of the tracked results. Step-centric and cell-centric parameters are automatically computed and saved into additional spreadsheets where users can access and reuse in statistical software or R. Automated visualization of cell migration is also generated for cell trajectory graph, box plots, etc. 
 * Cell trajectory graph
 	* 2D hair ball color coded by track
 	* 2D hair ball color coded by time (Imaris like)
@@ -52,13 +52,13 @@ A Jupyter Notebook and a python script is developed for automated processing and
 	* box plots, violin plots, and time series plots of cell migration parameters
 	* frequency histograms
 
-We worked on Usiigaci for our work on cell electrotaxis study, and hopefully can devote to current international trend to standardize cell migration experiments. 
+We worked on Usiigaci for our work on cell electrotaxis study, and hopefully can devote to current international effort to standardize cell migration experiments. 
 
 Usiigaci is released under MIT License. 
 
 We hope Usiigaci is interesting to you and if it is useful for your research, please cite the following paper.
 ```
-Hsieh-Fu Tsai, Tyler Sloan, Joanna Gajda, and Amy Q. Shen, softwareX, inprep
+Hsieh-Fu Tsai, Joanna Gajda, Tyler Sloan, Andrei Rares, and Amy Q. Shen, softwareX, inprep
 ```
 
 ## Dependencies
@@ -93,7 +93,7 @@ We have built all the testing and development on an Alienware 15 with GTX1070 8G
 * (jupyter-navbar)
 
 ## How to use Usiigaci 
-### Segmentation using Mask RCNN
+### Segmentation using Mask R-CNN
 The inference script "/Mask-RCNN/Inference.py" is the script you need to run prediction on images.
 1. (organize you image data)
 
@@ -153,6 +153,11 @@ Currently we have finished data loading interface for four types of analyzed dat
 	only cells that did not divide, fusion or lost throughout time lapse is picked up.
 
 4. Metamorph tracked data 
+
+5. Usiigaci tracked data
+
+	tracks.csv files are generated from the tracker. 
+	One can specify one file, or a folder containing many tracks.csv files. Automated data analysis is carried out on all the tracks.csv files. 
 	
 of all, since Lineage mapper and Metamorph only provide cell centroids data, the parameters regarding cell area, perimeter and orientation cannot be analyzed (there shouldn't be any error, just lack of data during data analysis and visualization in the notebook)
 
