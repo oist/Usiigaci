@@ -10,17 +10,17 @@ Hsieh-Fu Tsai<sup>1,2</sup>, Tyler Sloan<sup>3</sup>, Joanna Gajda<sup>4</sup>, 
 ![T98G microscopy](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gelectrotaxis-1.gif)
 ![T98G results from Usiigaci](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gmask-3.gif)
 
-[Usiigaci](http://ryukyu-lang.lib.u-ryukyu.ac.jp/srnh/details.php?ID=SN03227) in Ryukyuan language means "tracing", "透き写し"，*i.e.* drawing the outline of objects on a template. The process is essentially what we do: following the morphology and position of cells under microscope, analyze what they do upon changes in microenvironment. It's just bloody tedious to do this by human, and now we developed a pipeline using the famous Mask-RCNN to do this for us. Letting us not only track objects by their position but also how their morphology changes through time. 
+[Usiigaci](http://ryukyu-lang.lib.u-ryukyu.ac.jp/srnh/details.php?ID=SN03227) in Ryukyuan language means "tracing", "透き写し" in Japanese，*i.e.* drawing the outline of objects based on a template. The process is essentially what we do: following the morphology and position of cells under microscope, analyze how cell respond upon environmental perturbation in the microenvironment. However, this process is bloody tedious if done by human, and now we developed a pipeline using the famous Mask R-CNN to do this for us. Letting us not only track objects by their position but also track how their morphology changes through time. 
 
-Zernike's phase contrast microscopy is a brightfield microscopy technique developed by Frits Zernike and by inventing the phase contrast technique, he won the 1953 Nobel Prize for physics. Phase contrast microscopy is favored by biologists because it translates the phase difference caused by cell components into amplitude thus making these transparent structures more visible. Also, in comparison to differential interference microscopy, phase contrast microscopy works without problems with different substrates especially on plastics that contains high birefringence. 
+Zernike's phase contrast microscopy is a brightfield microscopy technique developed by Frits Zernike and by inventing the phase contrast technique, he won the 1953 Nobel Prize for physics. Phase contrast microscopy is favored by biologists because it translates the phase difference caused by cell components into amplitude thus making these transparent structures more visible. Also, in comparison to differential interference contrast microscopy, phase contrast microscopy works without problems with different substrates especially on plastics that are highly birefringent. 
 
-However, phase contrast microscopy images are notoriously difficult to segment by conventional computer vision methods. Accurate whole cell outline segmentation and resolution of cells that contact each other is essential as first step for accurate cell identification in automated microscopy. Tracking and visualization of the cellular dynamics based on the segmentations help us understand and quantitative analyze cellular dynamics. 
+Phase contrast microscopy images are notoriously difficult to segment by conventional computer vision methods. However, accurate whole cell outline segmentation and resolution of cells that contact each other are essential as the first step for cell tracking in automated microscopy needs accurate cell identification. Tracking and visualization of the cellular dynamics based on the segmentations help us understand and quantitative analyze cellular dynamics. 
 
 We report Usiigaci, a semi-automated pipeline to segment, track, and visualize cell migration in phase contrast microscopy.
 
-High accuracy label-free instance-aware segmentation is achieved by adapting the mask regional convolutional neural network (Mask R-CNN), winner of Marr prize at ICCV 2017 by He *et al.*. We built our segmentation part on the Mask R-CNN implementation by [Matterport](https://github.com/matterport/Mask_RCNN). High accuracy whole cell segmentation allow us to analyze both cell migration and cell morphology which is previously difficult without fluorescence imaging. 
+High accuracy label-free instance-aware segmentation is achieved by adapting the mask regional convolutional neural network (Mask R-CNN), winner of Marr prize at ICCV 2017 by He *et al.*. We built Usiigaci's segmentation module based on the Mask R-CNN implementation by [Matterport](https://github.com/matterport/Mask_RCNN). Using 50 manually-annotated cell images for training, the trained Mask R-CNN neural network can generate high accuracy whole cell segmentation masks that allow us to analyze both cell migration and cell morphology which are difficult even by fluorescent imaging. 
 
-Cell tracking and data verification can be done in ImageJ, other existin tracking software such as [Lineage Mapper](https://github.com/usnistgov/Lineage-Mapper), or we have also developed a tracker based on open-source [trackpy](https://soft-matter.github.io/trackpy/v0.3.2/) library and a GUI with the tracker. The cell tracks can be verified manually in the tracker GUI and bad tracks can be deleted by users. 
+Cell tracking and data verification can be done in ImageJ, other existin tracking software such as [Lineage Mapper](https://github.com/usnistgov/Lineage-Mapper), or Usiigaci tracker that we developed based on open-source [trackpy](https://soft-matter.github.io/trackpy/v0.3.2/) library. A GUI is also developed to allow manual data verification to check tracking results and delete bad results.  
 
 A Jupyter Notebook and the corresponding python script are developed for automated processing and visualization of the tracked results. Step-centric and cell-centric parameters are automatically computed and saved into additional spreadsheets where users can access and reuse in statistical software or R. Automated visualization of cell migration is also generated for cell trajectory graphs, box plots, etc. 
 
@@ -63,8 +63,9 @@ Hsieh-Fu Tsai, Joanna Gajda, Tyler Sloan, Andrei Rares, and Amy Q. Shen, softwar
 
 ## Dependencies
 ### Hardware
-A computer with CUDA-ready GPU should be able to do.
-We have built all the testing and development on an Alienware 15 with GTX1070 8GB laptop.
+A computer with CUDA-ready GPU should be able to run Usiigaci. 
+We have built all the testing and development on an Alienware 15 laptop with GTX1070 8GB GPU.
+
 
 ### Mask R-CNN
 * Kubuntu 16.04 Linux
@@ -94,7 +95,7 @@ We have built all the testing and development on an Alienware 15 with GTX1070 8G
 
 ## How to use Usiigaci 
 ### Segmentation using Mask R-CNN
-The inference script "/Mask-RCNN/Inference.py" is the script you need to run prediction on images.
+The inference script "/Mask-RCNN/Inference.py" is the script you need to run on images for generating corresponding masks. 
 1. (organize you image data)
 
 	assuming you're using NIS element, you can export the images by xy, t, and c if you have one.
@@ -124,22 +125,30 @@ The inference script "/Mask-RCNN/Inference.py" is the script you need to run pre
 4. instance-aware mask images will saved in a mask folder be right next to the folder you defined and you can use it to run in Lineage Mapper or etc.
 
 ### Data verification/tracking
+
+#### Tracking on ImageJ
+
 1. Load the images in ImageJ as a stack, you can verify the data and do manual tracking.
 2. for ease of tracking, you can use an ImageJ plugin developed by [Emanuele Martini](https://bitbucket.org/e_martini/fiji_plugins/overview). 
 	1. threshold the instance-aware stack to binary masks.
 	2. run the plugin, you can find one target cells on the first slice with magic wand tool and click ok, based on overlapping, the plugin will find the target ROIs in the rest of the slices and add them into ROI manager.
 	3. in ROI manager, you can edit each ROI and click "Measure" to output measured results for further analysis.
 
-3. A python tracking software is developed using the [trackpy](hhttps://soft-matter.github.io/trackpy/v0.3.2/) by Dr. Andrei Rares. 
+#### Tracking using Usiigaci tracker
+
+A python tracking software is developed using the [trackpy](hhttps://soft-matter.github.io/trackpy/v0.3.2/) by Dr. Andrei Rares. 
 	1. The segmented masks from Mask R-CNN are loaded and tracked using trackpy.
 	2. The tracking results that are suboptimal from segmentation error were repaired. 
-	3. A GUI is used to allow user to double check the results and deleted bad results.
-	4. The XY coordinate, area, perimeter, and orientation is extracted using scikit-image regionprops methods. 
+	3. A GUI is used to allow user to double check the results and deleted bad tracks if they exists.
+	4. The XY coordinate, area, perimeter, and angle (in radians) is extracted using scikit-image regionprops methods.
+	5. the results are saved into "tracks.csv" files and tracked images as well as movies are saved also. 
 
-3. Alternatively, you can load the indexed 8 bit masks files into Lineage Mapper, or Metamorph which the tracking can be eaily done.
+#### Tracking using other tracking software
+
+Alternatively, you can load the indexed 8 bit masks files into Lineage Mapper, or Metamorph which the tracking can be eaily done.
 
 ### Data analysis and visualization
-Currently we have finished data loading interface for four types of analyzed data
+Currently we have coded data loading interfaces for 5 types of analyzed data. but you can look into the codes to adapt the output data in your preference also.
 1. ImageJ tracked multi-measure output 
 
 	each cell track of all time points followed by another
