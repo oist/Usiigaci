@@ -61,6 +61,10 @@ We hope Usiigaci is interesting to you and if it is useful for your research, pl
 Hsieh-Fu Tsai, Joanna Gajda, Tyler Sloan, Andrei Rares, and Amy Q. Shen, softwareX, inprep
 ```
 
+## Acknowledgement:
+This work is supported by JSPS KAKENHI Grant JP1700362 and Okinawa Institute of Science and Technology Graduate University with subsidy funding from the Cabinet Office, Government of Japan. 
+
+
 ## Dependencies
 ### Hardware
 A computer with CUDA-ready GPU should be able to run Usiigaci. 
