@@ -61,6 +61,11 @@ We hope Usiigaci is interesting to you and if it is useful for your research, pl
 Hsieh-Fu Tsai, Joanna Gajda, Tyler Sloan, Andrei Rares, and Amy Q. Shen, softwareX, inprep
 ```
 
+## Future work
+- [ ] pretrain model weights for DIC microscopy.
+- [ ] Multiclass segmentation to realize identification of mitotic cells.
+- [ ] Multiclass segmentation to realize label-free co-cultured cell segmentation.
+
 ## Acknowledgement:
 This work is supported by JSPS KAKENHI Grant JP1700362 and Okinawa Institute of Science and Technology Graduate University with subsidy funding from the Cabinet Office, Government of Japan. 
 
@@ -79,12 +84,14 @@ We have built all the testing and development on an Alienware 15 laptop with GTX
 * Keras 2.1.2
 
 ### Python tracking GUI
-* trackpy
+* Trackpy
 * scikit-image
 * Numpy
 * Pandas
 * Matplotlib
 * PIMS
+* PyQtGraph
+* ffmpeg
 
 ### Single cell migration data analysis Notebook
 * Python3.4+
@@ -104,12 +111,12 @@ We have built all the testing and development on an Alienware 15 laptop with GTX
 	
 	Due to the file size limit of Github, please download the three weights we used for our phase contrast microscope in the [Dropbox folder](https://www.dropbox.com/sh/3eldgvytfchm9gr/AAB6vzPaEf8buk81IRVNClUEa?dl=0).
 
-	Note: These are trained for phase contrast images on Nikon Ti-E with 10X phase contrast objective, 1.5X intermediate magnification with a Hamamatsu Orca Flash V4.0 sCMOS camera at 1024x1022 size. We have found Mask R-CNN to be more resilient toward environmental changes, but if the results from pretrained weights are suboptimal, you can see the last section to train the network with your own data.
+	Note: These are trained for phase contrast images on Nikon Ti-E with 10X phase contrast objective, 1.5X intermediate magnification with a Hamamatsu Orca Flash V4.0 sCMOS camera at 1024x1022 size. We have found Mask R-CNN to be more resilient to environmental changes, but if the results from pretrained weights are suboptimal, you can see the last section to train the network with your own data.
 
 
 
 
-The inference script "/Mask-RCNN/Inference.py" is the script you need to run on images for generating corresponding masks. 
+The inference script "/Mask R-CNN/Inference.py" is the script you need to run on images for generating corresponding masks. 
 1. (organize you image data)
 
 	assuming you're using NIS element, you can export the images by xy, t, and c if you have one.
@@ -150,12 +157,34 @@ The inference script "/Mask-RCNN/Inference.py" is the script you need to run on 
 
 #### Tracking using Usiigaci tracker
 
-A python tracking software is developed using the [trackpy](hhttps://soft-matter.github.io/trackpy/v0.3.2/) by Dr. Andrei Rares. 
-1. The segmented masks from Mask R-CNN are loaded and tracked using trackpy.
-2. The tracking results that are suboptimal from segmentation error were repaired. 
-3. A GUI is used to allow user to double check the results and deleted bad tracks if they exists.
-4. The XY coordinate, area, perimeter, and angle (in radians) is extracted using scikit-image regionprops methods.
-5. the results are saved into "tracks.csv" files and tracked images as well as movies are saved also. 
+A python tracking software is developed based on the [trackpy](https://soft-matter.github.io/trackpy/v0.3.2/) libraries and others. 
+The tracker is the work by Dr. Andrei Rares. 
+
+##### Prerequisite:
+1. modify the Imageitem class of PyQtGraph
+overwrite the ImageItem.py into python/site-packages/pyqtgraph/graphicsItems folder
+
+
+##### Using the Usiigaci tracker:
+1. Launch the tracker GUI by 
+
+'''
+python cell_main.py
+'''
+
+2. open the folder to the cell microscopy images. The tracker will load the segmented masks by looking at mask folder name with maskfolder usffix
+3. Run cell tracking and the cell tracking will be done on using the mask generated from Mask R-CNN. 
+
+The tracking results that are suboptimal from segmentation error were repaired. 
+
+4. After tracking is finished. If there are bad tracks. Users can deselect that track in the cell list.
+
+Alternatively, users can also take advantage of select all tracks, or select complete tracks (only the tracks that are recognized and tracked through all the frames).
+
+5. Click "Save selection" to save the track results into "tracks.csv", labeled images, as well as rendered movies (you need ffmpeg) into a folder.
+
+6. The XY coordinate, area, perimeter, and orientation (angle between long axis and x axis in radians, note not the orientation index in cell migration) is extracted using scikit-image's measure.regionprops. 
+
 
 #### Tracking using other tracking software
 
