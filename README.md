@@ -189,7 +189,7 @@ python cell_main.py
 
 #### Tracking using other tracking software
 
-Alternatively, you can load the indexed 8 bit masks files into Lineage Mapper, or Metamorph which the tracking can be eaily done.
+Alternatively, you can load the indexed 8 bit masks files into Lineage Mapper, or Metamorph which the tracking can be easily done.
 
 ### Data analysis and visualization
 Currently we have coded data loading interfaces for 5 types of analyzed data. but you can look into the codes to adapt the output data in your preference also.
