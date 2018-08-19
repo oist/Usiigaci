@@ -168,9 +168,13 @@ overwrite the ImageItem.py into python/site-packages/pyqtgraph/graphicsItems fol
 ##### Using the Usiigaci tracker:
 1. Launch the tracker GUI by 
 
-```
-python cell_main.py
-```
+	```
+	python cell_main.py
+	```
+	The left panel is for displaying raw image. Right panel is for displaying mask images. Bottom are two synced scrollbars so users can check each frame of a time lapse experiments.
+	On the top left is the parameters setting. If the mask folder bear a different suffix, please change here. On the right is a list for all the cell tracks.
+	Upon finish of tracking, numbered ids and cell track list will be updated. 
+
 
 2. open the folder to the cell microscopy images. The tracker will load the segmented masks by looking at mask folder name with maskfolder usffix
 3. Run cell tracking and the cell tracking will be done on using the mask generated from Mask R-CNN. 
