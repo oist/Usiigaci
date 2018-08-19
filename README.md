@@ -10,7 +10,7 @@ Hsieh-Fu Tsai<sup>1,2</sup>, Joanna Gajda<sup>3</sup>, Tyler Sloan<sup>4</sup>, 
 ![T98G microscopy](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gelectrotaxis-1.gif)
 ![T98G results from Usiigaci](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gmask-3.gif)
 
-[Usiigaci](http://ryukyu-lang.lib.u-ryukyu.ac.jp/srnh/details.php?ID=SN03227) in Ryukyuan language means "tracing", "透き写し" in Japanese，*i.e.* drawing the outline of objects based on a template. The process is essentially what we do: following the morphology and position of cells under microscope, analyze how cell respond upon environmental perturbation in the microenvironment. However, this process is bloody tedious if done by human, and now we developed a pipeline using the famous Mask R-CNN to do this for us. Letting us not only track objects by their position but also track how their morphology changes through time. 
+[Usiigaci, ウシーガチ](http://ryukyu-lang.lib.u-ryukyu.ac.jp/srnh/details.php?ID=SN03227) in Ryukyuan language means "tracing", "透き写し" in Japanese，*i.e.* drawing the outline of objects based on a template. The process is essentially what we do: following the morphology and position of cells under microscope, analyze how cell respond upon environmental perturbation in the microenvironment. However, this process is bloody tedious if done by human, and now we developed a pipeline using the famous Mask R-CNN to do this for us. Letting us not only track objects by their position but also track how their morphology changes through time. 
 
 Zernike's phase contrast microscopy is a brightfield microscopy technique developed by Frits Zernike and by inventing the phase contrast technique, he won the 1953 Nobel Prize for physics. Phase contrast microscopy is favored by biologists because it translates the phase difference caused by cell components into amplitude thus making these transparent structures more visible. Also, in comparison to differential interference contrast microscopy, phase contrast microscopy works without problems with different substrates especially on plastics that are highly birefringent. 
 
@@ -62,6 +62,7 @@ Hsieh-Fu Tsai, Joanna Gajda, Tyler Sloan, Andrei Rares, and Amy Q. Shen, softwar
 ```
 
 ## Future work
+- [ ] scale calibration in usiigaci tracker
 - [ ] pretrain model weights for DIC microscopy.
 - [ ] Multiclass segmentation to realize identification of mitotic cells.
 - [ ] Multiclass segmentation to realize label-free co-cultured cell segmentation.
@@ -201,6 +202,7 @@ Alternatively, you can load the indexed 8 bit masks files into Lineage Mapper, o
 
 ### Data analysis and visualization
 Currently we have coded data loading interfaces for 5 types of analyzed data. but you can look into the codes to adapt the output data in your preference also.
+One needs to make sure the data outputed from each tracking software is already calibrated into micron since the data analysis script does not take account of this anymore.
 1. ImageJ tracked multi-measure output 
 
 	each cell track of all time points followed by another
