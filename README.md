@@ -176,6 +176,7 @@ python cell_main.py
 3. Run cell tracking and the cell tracking will be done on using the mask generated from Mask R-CNN. 
 
 	The tracking results that are suboptimal from segmentation error were repaired. 
+	The tracking takes about a minute or two depending on the number of objects and frames.
 
 4. After tracking is finished. If there are bad tracks. Users can deselect that track in the cell list.
 
