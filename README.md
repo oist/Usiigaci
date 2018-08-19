@@ -168,18 +168,18 @@ overwrite the ImageItem.py into python/site-packages/pyqtgraph/graphicsItems fol
 ##### Using the Usiigaci tracker:
 1. Launch the tracker GUI by 
 
-'''
+```
 python cell_main.py
-'''
+```
 
 2. open the folder to the cell microscopy images. The tracker will load the segmented masks by looking at mask folder name with maskfolder usffix
 3. Run cell tracking and the cell tracking will be done on using the mask generated from Mask R-CNN. 
 
-The tracking results that are suboptimal from segmentation error were repaired. 
+	The tracking results that are suboptimal from segmentation error were repaired. 
 
 4. After tracking is finished. If there are bad tracks. Users can deselect that track in the cell list.
 
-Alternatively, users can also take advantage of select all tracks, or select complete tracks (only the tracks that are recognized and tracked through all the frames).
+	Alternatively, users can also take advantage of select all tracks, or select complete tracks (only the tracks that are recognized and tracked through all the frames).
 
 5. Click "Save selection" to save the track results into "tracks.csv", labeled images, as well as rendered movies (you need ffmpeg) into a folder.
 
