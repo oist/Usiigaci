@@ -37,7 +37,7 @@ def initialize_experiment_parameters(path_in):
                               'orientation_x_2_sin', 'orientation_x_2_cos',
                               'true_solidity',
                               'solidity',
-                              'area', 'mean_intensity', 'orientation'],
+                              'area', 'mean_intensity', 'angle'],
                  'extra': ['bbox_top', 'bbox_left', 'bbox_bottom', 'bbox_right']}
     # Each column will have a "sister" column with prefix 'wtd_', which will represent its weighted version
     col_tuple['weighted'] = ['wtd_{}'.format(x) for x in col_tuple['original']]
@@ -115,7 +115,7 @@ def get_region_info(region, i_frame, col_weights):
                  'solidity': region.solidity,
                  'area': region.area,
                  'mean_intensity': region.mean_intensity,
-                 'orientation': region.orientation,
+                 'angle': region.orientation,
                  'frame': i_frame
                 }
     # Compute weighted features

@@ -183,7 +183,8 @@ python cell_main.py
 
 5. Click "Save selection" to save the track results into "tracks.csv", labeled images, as well as rendered movies (you need ffmpeg) into a folder.
 
-6. The XY coordinate, area, perimeter, and orientation (angle between long axis and x axis in radians, note not the orientation index in cell migration) is extracted using scikit-image's measure.regionprops. 
+6. The XY coordinate, area, perimeter, and angle are extracted using scikit-image's measure.regionprops. 
+	Note: angle between long axis and x axis in radians was extracted using region.orientation, but not to confuse with the orientation index in cell migration, which is cosine 2\*angle.
 
 
 #### Tracking using other tracking software
