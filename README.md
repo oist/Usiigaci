@@ -207,22 +207,18 @@ One needs to make sure the data outputed from each tracking software is already 
 
 	each cell track of all time points followed by another
 
-2. trackpy output data by our python tracker
-	
-	each cell track of all time points followed by another. Users can use the GUI to delete bad tracks for data verification.
-
-3. Lineage Mapper tracked results
+2. Lineage Mapper tracked results
 
 	only cells that did not divide, fusion or lost throughout time lapse is picked up.
 
-4. Metamorph tracked data 
+3. Metamorph tracked data 
 
-5. Usiigaci tracked data
+4. Usiigaci tracker tracked data
 
 	tracks.csv files are generated from the tracker. 
-	One can specify one file, or a folder containing many tracks.csv files. Automated data analysis is carried out on all the tracks.csv files. 
+	One can specify one file, or in the folder mode, the script will looks for all nested folders each containing a tracks.csv file and automated data analysis will be carried out on all the tracks.csv files. 
 	
-of all, since Lineage mapper and Metamorph only provide cell centroids data, the parameters regarding cell area, perimeter and orientation cannot be analyzed (there shouldn't be any error, just lack of data during data analysis and visualization in the notebook)
+of all, since Lineage mapper and Metamorph only provide cell centroids data, the parameters regarding cell area, perimeter and orientation cannot be analyzed (despite error the analysis should still be done, just lack of data during data analysis and visualization in the notebook)
 
 ## How to make your own training data and train them.
 We manually annotate training data  (phase contrast image acquired on Nikon Ti-E microscope with 10X Ph-1 objective and 1.5X intermediate magnification on Hamamatsu Orca Flash V4.0 with 2x2 binning) using opensource software Fiji ImageJ.
