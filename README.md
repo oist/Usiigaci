@@ -166,6 +166,9 @@ overwrite the ImageItem.py into python/site-packages/pyqtgraph/graphicsItems fol
 
 
 ##### Using the Usiigaci tracker:
+
+![Usiigaci tracker GUI](https://github.com/oist/Usiigaci/blob/master/Demo/GUI.png)
+
 1. Launch the tracker GUI by 
 
 	```
