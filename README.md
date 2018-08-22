@@ -74,7 +74,11 @@ This work is supported by JSPS KAKENHI Grant JP1700362 and Okinawa Institute of 
 ## Dependencies
 ### Hardware
 A computer with CUDA-ready GPU should be able to run Usiigaci. 
-We have built all the testing and development on an Alienware 15 laptop with GTX1070 8GB GPU.
+We built the development machine in linux environment on an Alienware 15 with NVIDIA GTX 1070 8GB GPU.
+But Usiigaci has been verified working on the following machine
+1. Windows 10 64 bit on Alienware 15 with GTX 1070 8GB
+2. Linux 64 bit on Alienware 15 with GTX 1080Ti 11GB
+3. Windows 7 64 bit on Dell Precision Workstation T7810 with Quadro M4000
 
 
 ### Mask R-CNN
