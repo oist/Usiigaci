@@ -5,7 +5,7 @@ Hsieh-Fu Tsai<sup>1,2</sup>, Joanna Gajda<sup>3</sup>, Tyler Sloan<sup>4</sup>, 
 <sup>2</sup>Research Fellow of Japan Society of Promotion for Science
 <sup>3</sup>
 <sup>4</sup>Quorumetrix Solutions, Canada
-<sup>5</sup>affil
+<sup>5</sup>ImagineA, The Netherlands
 
 ![T98G microscopy](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gelectrotaxis-1.gif)
 ![T98G results from Usiigaci](https://github.com/oist/Usiigaci/blob/master/Demo/T98Gmask-3.gif)
@@ -78,14 +78,29 @@ We have built all the testing and development on an Alienware 15 laptop with GTX
 
 
 ### Mask R-CNN
+#### our working linux setup
 * Kubuntu 16.04 Linux
 * NVIDIA graphics card with compute capability > 5.0
 * CUDA 9.1
 * TensorFlow 1.4
 * Keras 2.1.2
 
+#### our working windows setup
+* Windows 10 64bit
+* NVIDIA graphics card GTX 1070 8GB
+* Anaconda with Python 3.6
+* Tensorflow 1.9 with GPU
+* CUDA 9.0
+* CuDNN 7.1.4 for CUDA9.0
+* Keras 2.1.6 
+
+The exact version of CUDA and Keras is required to work with the Matterport Mask R-CNN repo.
+
+
 ### Python tracking GUI
+* Python 3.4+
 * Trackpy
+* Scipy
 * scikit-image
 * Numpy
 * Pandas
