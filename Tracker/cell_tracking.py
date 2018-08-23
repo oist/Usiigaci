@@ -26,7 +26,7 @@ def track_cells(path_in, raw_masks, min_cell_id=None):
     if min_cell_id is not None:
         reindex_with_min_cell_id(trj, min_cell_id)
     logging.info('Cell tracking finished.')
-    return trj, col_tuple
+    return trj, col_tuple, col_weights
 
 
 def initialize_experiment_parameters(path_in):

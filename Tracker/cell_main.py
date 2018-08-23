@@ -5,7 +5,7 @@ import pyqtgraph as pg
 from pyqtgraph.dockarea import *
 from PyQt5.QtWidgets import QFileDialog
 from cell_io import *
-from cell_img_proc import prepare_mask_colors
+from cell_drawing import prepare_mask_colors
 from cell_tracking import track_cells
 from collections import defaultdict
 # from skimage.morphology import binary_erosion
@@ -38,68 +38,78 @@ def open_folder_clicked(param):
     if len(result) == 0:
         logging.info('Canceled folder selection')
     else:
-        path_in = result
-        logging.info('Selected folder: "{}"'.format(path_in))
-        new_imgs = read_img_sequence(path_in, params['Raw image extension'][0])
-        new_masks = read_img_sequence(path_in + params['Mask folder suffix'][0],
-                                      params['Mask extension'][0])
-        if len(new_imgs) == len(new_masks) > 0:
-            # Clear previous data
-            trj = None
-            col_tuple.clear()
-            merged_masks = None
-            id_masks = None
-            id_masks_initial = None
-            cell_ids = []
-            cell_y.clear()
-            cell_x.clear()
-            for cell_id in track_plots_per_cell:
-                v_raw_img.removeItem(track_plots_per_cell[cell_id])
-                # v_raw_img.removeItem(contour_plots_per_cell[cell_id])
-                pi_raw_img.removeItem(cell_ids_raw_img[cell_id])
-                pi_mask.removeItem(cell_ids_mask[cell_id])
-            # contour_plots_per_cell.clear()
-            # contour_data_per_frame.clear()
-            wide_track_cell_id = None
-            track_plots_per_cell.clear()
-            track_data_per_frame.clear()
-            color_list = None
-            cell_color_idx.clear()
-            cell_visibility.clear()
-            cell_frame_presence.clear()
-            cell_ids_raw_img.clear()
-            cell_ids_mask.clear()
-            p_cell_selection.clearChildren()
-            v_raw_img.ui.histogram.gradient.restoreState(v_raw_img_original_state)
-            v_mask.ui.histogram.gradient.restoreState(v_mask_original_state)
-            # Read new data
-            raw_imgs = new_imgs
-            raw_masks = new_masks
-            current_frame_index = 0
-            background_id = -1
-            v_raw_img.setImage(raw_imgs, axes={'x': 1, 'y': 0, 't': 2})
-            v_raw_img.setCurrentIndex(current_frame_index)
-            pi_raw_img.setWindowTitle(str(current_frame_index))
-            v_mask.setImage(raw_masks, axes={'x': 1, 'y': 0, 't': 2})
-            v_mask.setCurrentIndex(current_frame_index)
-            b_cell_tracking.setEnabled(True)
-            b_save_selected.setEnabled(False)
-            b_select_all.setEnabled(False)
-            b_select_none.setEnabled(False)
-            b_select_complete.setEnabled(False)
-        else:
-            logging.error('Failed to read data from path "{}"'.format(path_in))
-            return
+        with pg.BusyCursor():
+            path_in = result
+            logging.info('Selected folder: "{}"'.format(path_in))
+            new_imgs = read_img_sequence(path_in, params['Raw image extension'][0])
+            new_masks = read_img_sequence(path_in + params['Mask folder suffix'][0],
+                                          params['Mask extension'][0])
+            if len(new_imgs) == len(new_masks) > 0:
+                # Clear previous data
+                trj = None
+                col_tuple.clear()
+                col_weights.clear()
+                merged_masks = None
+                id_masks = None
+                id_masks_initial = None
+                cell_ids = []
+                cell_y.clear()
+                cell_x.clear()
+                for cell_id in track_plots_per_cell:
+                    v_raw_img.removeItem(track_plots_per_cell[cell_id])
+                    # v_raw_img.removeItem(contour_plots_per_cell[cell_id])
+                    pi_raw_img.removeItem(cell_ids_raw_img[cell_id])
+                    pi_mask.removeItem(cell_ids_mask[cell_id])
+                # contour_plots_per_cell.clear()
+                # contour_data_per_frame.clear()
+                wide_track_cell_id = None
+                track_plots_per_cell.clear()
+                track_data_per_frame.clear()
+                color_list = None
+                cell_color_idx.clear()
+                cell_visibility.clear()
+                cell_frame_presence.clear()
+                cell_ids_raw_img.clear()
+                cell_ids_mask.clear()
+                p_cell_selection.clearChildren()
+                v_raw_img.ui.histogram.gradient.restoreState(v_raw_img_original_state)
+                v_mask.ui.histogram.gradient.restoreState(v_mask_original_state)
+                # Read new data
+                raw_imgs = new_imgs
+                raw_masks = new_masks
+                current_frame_index = 0
+                background_id = -1
+                v_raw_img.setImage(raw_imgs, axes={'x': 1, 'y': 0, 't': 2})
+                v_raw_img.setCurrentIndex(current_frame_index)
+                pi_raw_img.setWindowTitle(str(current_frame_index))
+                v_mask.setImage(raw_masks, axes={'x': 1, 'y': 0, 't': 2})
+                v_mask.setCurrentIndex(current_frame_index)
+                b_cell_tracking.setEnabled(True)
+                b_save_selected.setEnabled(False)
+                b_select_all.setEnabled(False)
+                b_select_none.setEnabled(False)
+                b_select_complete.setEnabled(False)
+                # win.setWindowTitle('Cell Tracking ({})'.format(path_in))  # If you want to know which dataset you opened, pressing the "Open Folder" button will take you to the current dataset
+            else:
+                if len(new_imgs) == len(new_masks):
+                    pg.Qt.QtGui.QMessageBox.error(b_save_selected,
+                                                  'Data reading failed',
+                                                  'Failed to read data from path "{}"'.format(path_in))
+                else:
+                    pg.Qt.QtGui.QMessageBox.error(b_save_selected,
+                                                  'Data reading failed',
+                                                  'The mask and raw image sequences have different lengths')
+                return
 
 
 def cell_tracking_clicked(param):
-    global merged_masks, trj, initial_trj, col_tuple, \
+    global merged_masks, trj, initial_trj, col_tuple, col_weights, \
         cell_ids, max_cell_id, background_id, color_list, cell_color_idx, \
         cell_visibility, cell_frame_presence, p_cell_selection, id_masks, id_masks_initial
     merged_masks = raw_masks.copy()
     with pg.BusyCursor():
         # We set min_cell_id to 1 below because we need to reserve cell id 0 for the background, for plotting purposes
-        trj, col_tuple = track_cells(path_in, merged_masks, min_cell_id=1)
+        trj, col_tuple, col_weights = track_cells(path_in, merged_masks, min_cell_id=1)
         initial_trj = trj.copy()
         id_masks, cell_ids, color_list, background_id = prepare_mask_colors(merged_masks, trj)
         cell_color_idx = dict([(x, col_idx) for col_idx, x in enumerate(cell_ids)])
@@ -189,13 +199,13 @@ def generate_cell_visibility_parametertree(cell_visibility):
 
 def save_selected_clicked(param):
     if not any(cell_visibility.values()):
-        pg.Qt.QtGui.QMessageBox.warning(b_save_selected,
-                                        'Save failed',
-                                        'Please select at least one cell before saving')
+        pg.Qt.QtGui.QMessageBox.error(b_save_selected,
+                                      'Save failed',
+                                      'Please select at least one cell before saving')
         return
     with pg.BusyCursor():
-        save_results(path_in, trj, col_tuple, id_masks, cell_ids, background_id,
-                     color_list, cell_color_idx, cell_visibility,
+        save_results(path_in, trj, col_tuple, col_weights, id_masks, cell_ids, background_id,
+                     color_list, cell_color_idx, cell_visibility, params['Pixel scale'][0], params['Pixel scale'][3],
                      params['Show id\'s'][0], True, params['Show tracks'][0],
                      params['Mask extension'][0])
 
@@ -273,8 +283,7 @@ def time_changed_mask(param, value):
 
 def param_changed(param, value):
     global show_ids, show_contours, show_tracks
-    param_type = params[param.name()][1]
-    params[param.name()] = (value, param_type)
+    params[param.name()] = (value,) +  params[param.name()][1:]
     if param.name() == 'Show id\'s':
         show_ids = value
         for cell_id in cell_ids_raw_img:
@@ -329,12 +338,14 @@ def cell_focus_changed(param, column):
 
 # Experiment related vars
 path_in = r'../../Data/'
+# (name, (value, type, siPrefix, suffix)) - the last two parameters are not always needed
 params = dict([('Raw image extension', ('tif', 'str')),
                ('Mask extension', ('png', 'str')),
                ('Mask folder suffix', ('_mask_avg', 'str')),
                ('Show id\'s', (True, 'bool')),
                # ('Show contours', (True, 'bool')),
-               ('Show tracks', (True, 'bool'))])
+               ('Show tracks', (True, 'bool')),
+               ('Pixel scale', (0.87e-6, 'float', True, 'm'))])
 current_frame_index = -1
 background_id = -1
 raw_imgs = None
@@ -351,6 +362,7 @@ cell_color_idx = {}
 trj = None
 initial_trj = None
 col_tuple = {}
+col_weights = {}
 show_ids = True
 show_contours = True
 show_tracks = True
@@ -386,8 +398,14 @@ dock_area.addDock(d_tracks, 'right')
 l_io = pg.LayoutWidget()
 # I/O file extension parameters
 pt_io_params = pg.parametertree.ParameterTree(showHeader=False)
-for param_name, (param_val, param_type) in params.items():
-    p_new = pg.parametertree.Parameter.create(name=param_name, type=param_type, value=param_val)
+for param_name, param_info in params.items():
+    if len(param_info) == 2:
+        param_val, param_type = param_info
+        p_new = pg.parametertree.Parameter.create(name=param_name, type=param_type, value=param_val)
+    elif len(param_info) == 4:
+        param_val, param_type, param_si_prefix, param_suffix = param_info
+        p_new = pg.parametertree.Parameter.create(name=param_name, type=param_type, value=param_val,
+                                                  siPrefix=param_si_prefix, suffix=param_suffix)
     p_new.sigValueChanged.connect(param_changed)
     pt_io_params.addParameters(p_new)
 l_io.addWidget(pt_io_params, row=0, col=0)
