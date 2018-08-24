@@ -62,7 +62,7 @@ Hsieh-Fu Tsai, Joanna Gajda, Tyler Sloan, Andrei Rares, and Amy Q. Shen, softwar
 ```
 
 ## Future work
-- [ ] scale calibration in usiigaci tracker
+- [x] scale calibration in Usiigaci tracker
 - [ ] pretrain model weights for DIC microscopy.
 - [ ] Multiclass segmentation to realize identification of mitotic cells.
 - [ ] Multiclass segmentation to realize label-free co-cultured cell segmentation.
