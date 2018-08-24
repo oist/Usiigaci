@@ -63,6 +63,7 @@ Hsieh-Fu Tsai, Joanna Gajda, Tyler Sloan, Andrei Rares, and Amy Q. Shen, softwar
 
 ## Future work
 - [x] scale calibration in Usiigaci tracker
+- [ ] Add a video tutorial
 - [ ] pretrain model weights for DIC microscopy.
 - [ ] Multiclass segmentation to realize identification of mitotic cells.
 - [ ] Multiclass segmentation to realize label-free co-cultured cell segmentation.
@@ -88,6 +89,7 @@ But Usiigaci has been verified working on the following machine
 * CUDA 9.1
 * TensorFlow 1.4
 * Keras 2.1.2
+* Anaconda with Python 3.6 
 
 #### our working windows setup
 * Windows 10 64bit
