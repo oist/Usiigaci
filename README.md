@@ -62,8 +62,6 @@ Hsieh-Fu Tsai, Joanna Gajda, Tyler Sloan, Andrei Rares, and Amy Q. Shen, softwar
 ```
 
 ## Future work
-- [x] scale calibration in Usiigaci tracker
-- [ ] Add a video tutorial
 - [ ] pretrain model weights for DIC microscopy.
 - [ ] Multiclass segmentation to realize identification of mitotic cells.
 - [ ] Multiclass segmentation to realize label-free co-cultured cell segmentation.
@@ -127,6 +125,9 @@ The exact version of CUDA and Keras is required to work with the Matterport Mask
 * (jupyter-navbar)
 
 ## How to use Usiigaci 
+### Video tutorial 
+https://www.youtube.com/watch?v=eU8UBXJ8GuA
+
 ### Segmentation using Mask R-CNN
 
 1. Download the trained weights
