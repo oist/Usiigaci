@@ -3,7 +3,7 @@
 # Source files
 # ============
 *.pxd		text
-*.ipynb
+*.py    text
 *.pyw 		text
 *.pyx  		text
 
@@ -20,7 +20,5 @@
 # with the python modules ``pickle``, ``dbm.*``,
 # ``shelve``, ``marshal``, ``anydbm``, & ``bsddb``
 # (among others).
-__pycache__/
 
-.ipynb_checkpoints
 
