@@ -3,8 +3,7 @@
 # Source files
 # ============
 *.pxd		text
-*.py 		text
-*.py3 		text
+*.py    text
 *.pyw 		text
 *.pyx  		text
 
@@ -21,3 +20,5 @@
 # with the python modules ``pickle``, ``dbm.*``,
 # ``shelve``, ``marshal``, ``anydbm``, & ``bsddb``
 # (among others).
+
+
