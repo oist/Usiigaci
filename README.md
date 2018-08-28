@@ -1,5 +1,5 @@
 # Usiigaci: Label-free instance-aware cell tracking under phase contrast microscopy using Mask R-CNN
-**Hsieh-Fu Tsai<sup>1,2</sup>, Joanna Gajda<sup>3</sup>, Tyler Sloan<sup>4</sup>, Andrei Rares<sup>5</sup>, and Amy Q. Shen<sup>1</sup>**
+**Hsieh-Fu Tsai<sup>1,2</sup>, Joanna Gajda<sup>3</sup>, Tyler F.W. Sloan<sup>4</sup>, Andrei Rares<sup>5</sup>, and Amy Q. Shen<sup>1</sup>**
 
 <sup><sup>1</sup>Micro/Bio/Nanofluidics Unit, Okinawa Institute of Science and Technology Graduate University, Okinawa Japan
 <sup>2</sup>Research Fellow of Japan Society of Promotion for Science
@@ -77,7 +77,7 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 We hope Usiigaci is interesting to you and if it is useful for your research, please cite the following paper.
 ```
-Hsieh-Fu Tsai, Joanna Gajda, Tyler Sloan, Andrei Rares, and Amy Q. Shen, softwareX, inprep
+Hsieh-Fu Tsai, Joanna Gajda, Tyler F.W. Sloan, Andrei Rares, and Amy Q. Shen, softwareX, inprep
 ```
 
 ## Future work
@@ -93,11 +93,12 @@ This work is supported by JSPS KAKENHI Grant JP1700362 and Okinawa Institute of 
 ### Hardware
 A computer with CUDA-ready GPU should be able to run Usiigaci. 
 We built the development machine in linux environment on an Alienware 15 with NVIDIA GTX 1070 8GB GPU.
-But Usiigaci has been verified working on the following machine
+But Usiigaci has been verified working on the following machines.
 1. Windows 10 64 bit on Alienware 15 with GTX 1070 8GB
-2. Linux 64 bit on Alienware 15 with GTX 1080Ti 11GB
+2. Linux 64 bit on Alienware 15 with GTX1070 8GB or with a GTX 1080Ti 11GB in an Alienware graphics amplifier
 3. Windows 7 64 bit on Dell Precision Workstation T7810 with Quadro M4000
 
+We see a high efficiency on running Usiigaci in a linux machine.
 
 ### Mask R-CNN
 #### our working linux setup
