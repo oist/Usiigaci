@@ -1,0 +1,13 @@
+>Loading model from:  /home/davince/Dropbox (OIST)/Deeplearning_system/Usiigaci-master/Mask R-CNN/trained_network/Usiigaci_1.h5
+prediction for:  /home/davince/Dropbox (OIST)/Deeplearning_system/Usiigaci-master/Data/T98G_sample
+model run 1 of 3
+>Loading model from:  /home/davince/Dropbox (OIST)/Deeplearning_system/Usiigaci-master/Mask R-CNN/trained_network/Usiigaci_2.h5
+prediction for:  /home/davince/Dropbox (OIST)/Deeplearning_system/Usiigaci-master/Data/T98G_sample
+model run 2 of 3
+>Loading model from:  /home/davince/Dropbox (OIST)/Deeplearning_system/Usiigaci-master/Mask R-CNN/trained_network/Usiigaci_3.h5
+prediction for:  /home/davince/Dropbox (OIST)/Deeplearning_system/Usiigaci-master/Data/T98G_sample
+model run 3 of 3
+Merging multiple models predictions.
+prediction run time = 0 hr: 7 min: 4 s
+[424.96456027030945]
+Total prediction run time = 0 day: 0 hr: 7 min: 4 s
