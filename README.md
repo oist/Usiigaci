@@ -146,7 +146,7 @@ The exact version of CUDA and Keras is required to work with the Matterport Mask
 
 ## How to use Usiigaci 
 ### Video tutorial 
-[Link](https://www.youtube.com/watch?v=MXRZ1x0bW10)
+[Youtube link](https://www.youtube.com/watch?v=nH2oc-o5K10)
 
 ### Segmentation using Mask R-CNN
 
