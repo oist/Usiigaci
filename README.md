@@ -75,6 +75,28 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ```
 
+TensorFlow is open-sourced under Apache 2.0 opensource license. 
+
+Keras is released under MIT license
+
+The copyright of PyQT belong to Riverbank Computing ltd.
+
+Pandas is released under [BSD 3-Clause License](http://pandas.pydata.org/pandas-docs/stable/overview.html?highlight=bsd). Copyright owned by AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team. 
+
+Trackpy is released under [BSD 3-Clause License](https://github.com/soft-matter/trackpy/blob/master/LICENSE). Copyright owned by trackpy contributors.
+
+NumPy and SciPy are released under [BSD-new License]
+
+Scikit-image is released under [modified BSD license](https://github.com/scikit-image/scikit-image)
+
+PIMS is released under [modified BSD license](https://github.com/soft-matter/pims/blob/master/license.txt)
+
+Matplotlib is released under [Python Software Foundation (PDF) license](https://matplotlib.org/)
+
+Seaborn is released un [BSD 3-clause license](https://github.com/mwaskom/seaborn/blob/master/LICENSE)
+
+ffmpeg is licensed under [LGPL 2.1 license](https://www.ffmpeg.org/legal.html)
+
 We hope Usiigaci is interesting to you and if it is useful for your research, please cite the following paper.
 ```
 Hsieh-Fu Tsai, Joanna Gajda, Tyler F.W. Sloan, Andrei Rares, and Amy Q. Shen, softwareX, inprep
