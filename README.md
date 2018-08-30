@@ -155,8 +155,11 @@ The exact version of CUDA and Keras is required to work with the Matterport Mask
 * Pandas
 * Matplotlib
 * PIMS
+* PyQt5
 * PyQtGraph
 * ffmpeg
+* Pandas
+
 
 ### Single cell migration data analysis Notebook
 * Python3.4+
