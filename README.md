@@ -54,6 +54,12 @@ A Jupyter Notebook and the corresponding python script are developed for automat
 
 We worked on Usiigaci for our work on cell electrotaxis study, and hopefully can devote to current international effort to standardize cell migration experiments. 
 
+We hope Usiigaci is interesting to you and if it is useful for your research, please cite the following paper.
+```
+Hsieh-Fu Tsai, Joanna Gajda, Tyler F.W. Sloan, Andrei Rares, and Amy Q. Shen, softwareX, inprep
+```
+
+
 Usiigaci is released under MIT License. 
 ```
 Copyright (c) 2018 Okinawa Institute of Science & Technology Graduate University
@@ -93,14 +99,11 @@ PIMS is released under [modified BSD license](https://github.com/soft-matter/pim
 
 Matplotlib is released under [Python Software Foundation (PDF) license](https://matplotlib.org/)
 
-Seaborn is released un [BSD 3-clause license](https://github.com/mwaskom/seaborn/blob/master/LICENSE)
+Seaborn is released under [BSD 3-clause license](https://github.com/mwaskom/seaborn/blob/master/LICENSE)
 
 ffmpeg is licensed under [LGPL 2.1 license](https://www.ffmpeg.org/legal.html)
 
-We hope Usiigaci is interesting to you and if it is useful for your research, please cite the following paper.
-```
-Hsieh-Fu Tsai, Joanna Gajda, Tyler F.W. Sloan, Andrei Rares, and Amy Q. Shen, softwareX, inprep
-```
+
 
 ## Future work
 - [ ] pretrain model weights for DIC microscopy.
