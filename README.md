@@ -91,7 +91,7 @@ Pandas is released under [BSD 3-Clause License](http://pandas.pydata.org/pandas-
 
 Trackpy is released under [BSD 3-Clause License](https://github.com/soft-matter/trackpy/blob/master/LICENSE). Copyright owned by trackpy contributors.
 
-NumPy and SciPy are released under [BSD-new License]
+NumPy and SciPy are released under BSD-new License
 
 Scikit-image is released under [modified BSD license](https://github.com/scikit-image/scikit-image)
 
@@ -103,6 +103,7 @@ Seaborn is released under [BSD 3-clause license](https://github.com/mwaskom/seab
 
 ffmpeg is licensed under [LGPL 2.1 license](https://www.ffmpeg.org/legal.html)
 
+PyQtGraph is released under MIT license
 
 
 ## Future work
