@@ -56,7 +56,7 @@ We worked on Usiigaci for our work on cell electrotaxis study, and hopefully can
 
 We hope Usiigaci is interesting to you and if it is useful for your research, please cite the following paper.
 ```
-Hsieh-Fu Tsai, Joanna Gajda, Tyler F.W. Sloan, Andrei Rares, and Amy Q. Shen, softwareX, inprep
+Hsieh-Fu Tsai, Joanna Gajda, Tyler F.W. Sloan, Andrei Rares, and Amy Q. Shen, *SoftwareX*, inprep
 ```
 
 
@@ -175,7 +175,7 @@ The exact version of CUDA and Keras is required to work with the Matterport Mask
 
 ## How to use Usiigaci 
 ### Video tutorial 
-[Youtube link](https://www.youtube.com/watch?v=nH2oc-o5K10)
+[Youtube link](https://www.youtube.com/watch?v=p-jCPLb2WE4)
 
 ### Segmentation using Mask R-CNN
 
