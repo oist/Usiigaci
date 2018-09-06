@@ -6,7 +6,7 @@ purpose:
 this notebook aims to be a general tool for analysis of single cell migration data with use of opensource tools.
 
 Input data:
-the script can process cell tracking data from ImageJ, Lineage mapper, or Imaris.
+the script can process cell tracking data from ImageJ, Lineage Mapper, Metamorph, or Usiigaci tracker.
 If you use this code, please cite the following paper:
 
 Hsieh-Fu Tsai, Joanna Gajda, Tyler Sloan, Andrei Rares, Amy Shen, Usiigaci: Label-free instance-aware cell tracking in phase contrast microscopy using Mask R-CNN.
