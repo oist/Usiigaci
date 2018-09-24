@@ -60,7 +60,7 @@ We worked on Usiigaci for our work on cell electrotaxis study, and hopefully can
 
 We hope Usiigaci is interesting to you and if it is useful for your research, please cite the following paper.
 ```
-Hsieh-Fu Tsai, Joanna Gajda, Tyler F.W. Sloan, Andrei Rares, and Amy Q. Shen, SoftwareX, submitted
+Hsieh-Fu Tsai, Joanna Gajda, Tyler F.W. Sloan, Andrei Rares, and Amy Q. Shen, submitted
 ```
 
 
