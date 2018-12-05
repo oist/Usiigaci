@@ -111,6 +111,7 @@ PyQtGraph is released under MIT license
 
 
 ## Future work
+- [ ] Add a function to find best model weight
 - [ ] pretrain model weights for DIC microscopy.
 - [ ] Multiclass segmentation to realize identification of mitotic cells.
 - [ ] Multiclass segmentation to realize label-free co-cultured cell segmentation.
