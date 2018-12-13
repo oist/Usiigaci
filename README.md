@@ -1,4 +1,4 @@
-# Usiigaci: Label-free instance-aware cell tracking in phase contrast microscopy enabled by machine learning
+# Usiigaci: Instance-aware cell tracking in stain-free phase contrast microscopy enabled by machine learning
 **Hsieh-Fu Tsai<sup>1,2</sup>, Joanna Gajda<sup>3</sup>, Tyler F.W. Sloan<sup>4</sup>, Andrei Rares<sup>5</sup>, and Amy Q. Shen<sup>1</sup>**
 
 <sup><sup>1</sup>Micro/Bio/Nanofluidics Unit, Okinawa Institute of Science and Technology Graduate University, Okinawa Japan</sup>
@@ -22,7 +22,7 @@ Phase contrast microscopy images are notoriously difficult to segment by convent
 
 We report Usiigaci, a semi-automated pipeline to segment, track, and visualize cell migration in phase contrast microscopy.
 
-High accuracy label-free instance-aware segmentation is achieved by adapting the mask regional convolutional neural network (Mask R-CNN), winner of Marr prize at ICCV 2017 by He *et al.*. We built Usiigaci's segmentation module based on the Mask R-CNN implementation by [Matterport](https://github.com/matterport/Mask_RCNN). Using 50 manually-annotated cell images for training, the trained Mask R-CNN neural network can generate high accuracy whole cell segmentation masks that allow us to analyze both cell migration and cell morphology which are difficult even by fluorescent imaging. 
+High accuracy instance-aware segmentation is achieved by adapting the mask regional convolutional neural network (Mask R-CNN), winner of Marr prize at ICCV 2017 by He *et al.*. We built Usiigaci's segmentation module based on the Mask R-CNN implementation by [Matterport](https://github.com/matterport/Mask_RCNN). Using 50 manually-annotated cell images for training, the trained Mask R-CNN neural network can generate high accuracy whole cell segmentation masks that allow us to analyze both cell migration and cell morphology which are difficult even by fluorescent imaging. 
 
 Cell tracking and data verification can be done in ImageJ, other existin tracking software such as [Lineage Mapper](https://github.com/usnistgov/Lineage-Mapper), or Usiigaci tracker that we developed based on open-source [trackpy](https://soft-matter.github.io/trackpy/v0.3.2/) library. A GUI is also developed to allow manual data verification to check tracking results and delete bad results.  
 
