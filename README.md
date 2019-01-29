@@ -137,9 +137,9 @@ We see a high efficiency on running Usiigaci in a linux machine.
 #### our working linux setup
 * Kubuntu 16.04 Linux
 * NVIDIA graphics card with compute capability > 5.0
-* CUDA 9.1
-* TensorFlow 1.4
-* Keras 2.1.2
+* CUDA ~~9.1~~ 9.0
+* TensorFlow ~~1.4~~ 1.7 with GPU
+* Keras ~~2.1.2~~ 2.1.5
 * Anaconda with Python 3.6 
 
 #### our working windows setup
