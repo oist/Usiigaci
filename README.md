@@ -142,6 +142,8 @@ We see a high efficiency on running Usiigaci in a linux machine.
 * Keras ~~2.1.2~~ 2.1.5
 * Anaconda with Python 3.6 
 
+note: multiple GPU not working
+
 #### our working windows setup
 * Windows 10 64bit
 * NVIDIA graphics card GTX 1070 8GB
