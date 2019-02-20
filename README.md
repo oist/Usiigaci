@@ -154,6 +154,121 @@ note: multiple GPU not working
 * Keras 2.1.6 
 
 The exact version of CUDA and Keras is required to work with the Matterport Mask R-CNN repo.
+#### setup tutorial on an Ubuntu linux 16.04 LTS from scratch. (update 20190220)
+##### installation of Ubuntu 16.04 LTS
+download the Ubuntu 16.04 and do not upgrade to 18.04
+
+##### installation of cuda
+1. preinstall actions
+* verify cuda-capable gpu
+```
+lspci | grep -i nvidia
+```
+* verfiy a supported version of linux
+```
+uname -m && cat /etc/*-release
+```
+* verify the system has gcc installed 
+```
+gcc --version
+```
+2. disable nouveau
+```
+lsmod | grep nouveau
+```
+
+if prints anything, means neouveau is loaded and must be disabled before proceeding to install cuda
+
+navigate to /etc/modprobe.d/
+
+```
+sudo nano ./blacklist.nouveau.conf
+```
+
+enter the following in the file
+
+```
+blacklist nouveau
+options nouveau modeset=0
+```
+
+save
+regenerate the kernel initrd by the command
+
+```
+sudo update-initramfs -u
+```
+
+3. download cuda 9 deb from nvidia
+9.0 local deb
+
+navigate to download folder
+```
+sudo dpkg -i cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64.deb
+```
+installation of public gpg key
+sudo apt-key add /var/cuda/repo-9-0-local/7fa2af80.pub
+sudo apt-get update
+sudo apt-get install cuda
+
+4. post installation operations
+edit bashrc file in user folder
+add the following two lines
+```
+export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64\${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+``` 
+
+5. installation of cudnn
+it is necessary to install cudnn of the right version otherwise the tensorflow will have error
+download from nvidia
+libcudnn7_7.0.5_15 for cuda 9.0 runtime library as well as developer library
+
+navigate to download folder
+
+```
+sudo dpkg -i libcudnn7_7.0.5.15-1+cuda9.0_amd64.deb
+sudo dpkg -i libcudnn7-dev_7.0.5.15-1+cuda9.0_amd64.deb
+```
+
+#####installation tensorflow
+1. installation python 3 and virtualenv
+sudo apt update
+sudo apt install python3-dev python3-pip
+sudo pip3 install -U virtualenv
+
+2. installation of tensorflow
+create a virtual environment, let it be tensorflow or anything you want to name after.
+```
+virtualenv --system-site-packages -p python3 tensorflow
+```
+afterward enter the virtual environment tensorflow
+```
+source tensorflow/bin/activate
+```
+
+```
+pip isntall --upgrade pip
+pip install tensorflow-gpu==1.7
+```
+exit bash and restart
+test tensorflow installation
+```
+source tensorflow/bin/activate
+python
+import tensorflow as tf
+```
+there should be no error 
+
+#####installation of other dependencies for usiigaci
+```
+source tensorflow/bin/activate
+pip install opencv-python tqdm docopt imgaug h5py
+pip install keras==2.1.5
+```
+
+*voila* there you should have a working environment for usiigaci on the linux 
+try it out with the inference script
 
 
 ### Python tracking GUI
