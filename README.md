@@ -234,7 +234,7 @@ the driver will be installed when cuda is installed.
 	sudo dpkg -i libcudnn7-dev_7.0.5.15-1+cuda9.0_amd64.deb
 	```
 
-#####installation tensorflow
+##### installation tensorflow
 1. installation python 3 and virtualenv
 	sudo apt update
 	sudo apt install python3-dev python3-pip python3-tk
@@ -263,7 +263,7 @@ the driver will be installed when cuda is installed.
 	```
 	there should be no error 
 
-#####installation of other dependencies for usiigaci
+##### installation of other dependencies for usiigaci
 ```
 source tensorflow/bin/activate
 pip install opencv-python tqdm docopt imgaug h5py
