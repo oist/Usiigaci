@@ -210,9 +210,11 @@ the driver will be installed when cuda is installed.
 	sudo dpkg -i cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64.deb
 	```
 	installation of public gpg key
+	```
 	sudo apt-key add /var/cuda/repo-9-0-local/7fa2af80.pub
 	sudo apt-get update
 	sudo apt-get install cuda
+	```
 
 4. post installation operations
 	edit bashrc file in user folder
@@ -236,9 +238,11 @@ the driver will be installed when cuda is installed.
 
 ##### installation tensorflow
 1. installation python 3 and virtualenv
+	```
 	sudo apt update
 	sudo apt install python3-dev python3-pip python3-tk
 	sudo pip3 install -U virtualenv
+	```
 
 2. installation of tensorflow
 	create a virtual environment, let it be tensorflow or anything you want to name after.
@@ -452,11 +456,11 @@ of all, since Lineage mapper and Metamorph only provide cell centroids data, the
 	launch jupyter notebook in the folder and open the data_analysis ipynb
 
 3. edit the experimental details in the dataanalysis script
-	line 52 : number of frames
-	line 54 : time interval of the time lapse
-	line 58 : the folder path to your data
-	line 60 : what kind of data your are processing, single csv file, or multiple tracks.csv in nested folders. (note right now only usiigaci is supported)
-	line 62 : what kind of the data? from imageJ, metamorph, or usiigaci tracker.
+	* line 52 : number of frames
+	* line 54 : time interval of the time lapse
+	* line 58 : the folder path to your data
+	* line 60 : what kind of data your are processing, single csv file, or multiple tracks.csv in nested folders. (note right now only usiigaci is supported)
+	* line 62 : what kind of the data? from imageJ, metamorph, or usiigaci tracker.
 
 4. note the folder path definition under windows and under linux is slightly different.
 adjust if necessary 
