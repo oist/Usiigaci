@@ -159,106 +159,109 @@ The exact version of CUDA and Keras is required to work with the Matterport Mask
 download the Ubuntu 16.04 and do not upgrade to 18.04
 
 ##### installation of cuda
+note: don't worry about getting the up-to-date graphics driver prior than cuda.
+the driver will be installed when cuda is installed.
+
 1. preinstall actions
-* verify cuda-capable gpu
-```
-lspci | grep -i nvidia
-```
-* verfiy a supported version of linux
-```
-uname -m && cat /etc/*-release
-```
-* verify the system has gcc installed 
-```
-gcc --version
-```
+	* verify cuda-capable gpu
+	```
+	lspci | grep -i nvidia
+	```
+	* verfiy a supported version of linux
+	```
+	uname -m && cat /etc/*-release
+	```
+	* verify the system has gcc installed 
+	```
+	gcc --version
+	```
 2. disable nouveau
-```
-lsmod | grep nouveau
-```
+	```
+	lsmod | grep nouveau
+	```
 
-if prints anything, means neouveau is loaded and must be disabled before proceeding to install cuda
+	if prints anything, means neouveau is loaded and must be disabled before proceeding to install cuda
 
-navigate to /etc/modprobe.d/
+	navigate to /etc/modprobe.d/
 
-```
-sudo nano ./blacklist.nouveau.conf
-```
+	```
+	sudo nano ./blacklist.nouveau.conf
+	```
 
-enter the following in the file
+	enter the following in the file
 
-```
-blacklist nouveau
-options nouveau modeset=0
-```
+	```
+	blacklist nouveau
+	options nouveau modeset=0
+	```
 
-save
-regenerate the kernel initrd by the command
+	save
+	regenerate the kernel initrd by the command
 
-```
-sudo update-initramfs -u
-```
+	```
+	sudo update-initramfs -u
+	```
 
 3. download cuda 9 deb from nvidia
-9.0 local deb
+	9.0 local deb
 
-navigate to download folder
-```
-sudo dpkg -i cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64.deb
-```
-installation of public gpg key
-sudo apt-key add /var/cuda/repo-9-0-local/7fa2af80.pub
-sudo apt-get update
-sudo apt-get install cuda
+	navigate to download folder
+	```
+	sudo dpkg -i cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64.deb
+	```
+	installation of public gpg key
+	sudo apt-key add /var/cuda/repo-9-0-local/7fa2af80.pub
+	sudo apt-get update
+	sudo apt-get install cuda
 
 4. post installation operations
-edit bashrc file in user folder
-add the following two lines
-```
-export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64\${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-``` 
+	edit bashrc file in user folder
+	add the following two lines
+	```
+	export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
+	export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64\${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+	``` 
 
 5. installation of cudnn
-it is necessary to install cudnn of the right version otherwise the tensorflow will have error
-download from nvidia
-libcudnn7_7.0.5_15 for cuda 9.0 runtime library as well as developer library
+	it is necessary to install cudnn of the right version otherwise the tensorflow will have error
+	download from nvidia
+	libcudnn7_7.0.5_15 for cuda 9.0 runtime library as well as developer library
 
-navigate to download folder
+	navigate to download folder
 
-```
-sudo dpkg -i libcudnn7_7.0.5.15-1+cuda9.0_amd64.deb
-sudo dpkg -i libcudnn7-dev_7.0.5.15-1+cuda9.0_amd64.deb
-```
+	```
+	sudo dpkg -i libcudnn7_7.0.5.15-1+cuda9.0_amd64.deb
+	sudo dpkg -i libcudnn7-dev_7.0.5.15-1+cuda9.0_amd64.deb
+	```
 
 #####installation tensorflow
 1. installation python 3 and virtualenv
-sudo apt update
-sudo apt install python3-dev python3-pip
-sudo pip3 install -U virtualenv
+	sudo apt update
+	sudo apt install python3-dev python3-pip python3-tk
+	sudo pip3 install -U virtualenv
 
 2. installation of tensorflow
-create a virtual environment, let it be tensorflow or anything you want to name after.
-```
-virtualenv --system-site-packages -p python3 tensorflow
-```
-afterward enter the virtual environment tensorflow
-```
-source tensorflow/bin/activate
-```
+	create a virtual environment, let it be tensorflow or anything you want to name after.
+	```
+	virtualenv --system-site-packages -p python3 tensorflow
+	```
+	afterward enter the virtual environment tensorflow
+	```
+	source tensorflow/bin/activate
+	```
 
-```
-pip isntall --upgrade pip
-pip install tensorflow-gpu==1.7
-```
-exit bash and restart
-test tensorflow installation
-```
-source tensorflow/bin/activate
-python
-import tensorflow as tf
-```
-there should be no error 
+	```
+	pip install --upgrade pip
+	pip install tensorflow-gpu==1.7
+	```
+	exit bash and restart
+	test tensorflow installation
+	```
+	source tensorflow/bin/activate
+	python
+	import tensorflow as tf
+	```
+	there should be no error 
 
 #####installation of other dependencies for usiigaci
 ```
@@ -310,9 +313,8 @@ try it out with the inference script
 	Note: These are trained for phase contrast images on Nikon Ti-E with 10X phase contrast objective, 1.5X intermediate magnification with a Hamamatsu Orca Flash V4.0 sCMOS camera at 1024x1022 size. We have found Mask R-CNN to be more resilient to environmental changes, but if the results from pretrained weights are suboptimal, you can see the last section to train the network with your own data.
 
 
+	The inference script "/Mask R-CNN/Inference.py" is the script you need to run on images for generating corresponding masks. 
 
-
-The inference script "/Mask R-CNN/Inference.py" is the script you need to run on images for generating corresponding masks. 
 1. (organize you image data)
 
 	assuming you're using NIS element, you can export the images by xy, t, and c if you have one.
@@ -357,9 +359,23 @@ A python tracking software is developed based on the [trackpy](https://soft-matt
 The tracker is the work by Dr. Andrei Rares. 
 
 ##### Prerequisite:
-1. modify the Imageitem class of PyQtGraph
-overwrite the ImageItem.py into python/site-packages/pyqtgraph/graphicsItems folder
+1. install required packages
+	```
+	pip install pyqt5 trackpy pims pandas trackpy pillow imageio--ffmpeg
+	```
 
+	some times pillow nees to be upgraded 
+	```
+	pip install --upgrade pillow
+	```
+
+2. modify the Imageitem class of PyQtGraph
+	overwrite the ImageItem.py into python/site-packages/pyqtgraph/graphicsItems folder
+
+	If working in the virtual environment *tensorflow*:
+	it will be under /home/username/tensorflow/lib/python3.5/site-packages/pyqtgraph/graphicitems/
+
+3. if needed you can chage the suffix for the mask folder and the pixel scale in the params settings around line 342 in cell_main.py
 
 ##### Using the Usiigaci tracker:
 
@@ -375,7 +391,14 @@ overwrite the ImageItem.py into python/site-packages/pyqtgraph/graphicsItems fol
 	Upon finish of tracking, numbered ids and cell track list will be updated. 
 
 
-2. open the folder to the cell microscopy images. The tracker will load the segmented masks by looking at mask folder name with maskfolder usffix
+2. open the folder to the cell microscopy images. 
+
+	The tracker will load the segmented masks by looking for mask folder name with the name of the cell microscopy name + mask folder suffix
+
+	remember to check the suffix is correct or not. If the suffix is incorrect, the tracker failed to find the mask, it will terminate. the suffix differs depend if you have averaging turned on or not. 
+
+	adjust the pixel scale if necessary also
+
 3. Run cell tracking and the cell tracking will be done on using the mask generated from Mask R-CNN. 
 
 	The tracking results that are suboptimal from segmentation error were repaired. 
@@ -411,9 +434,33 @@ One needs to make sure the data outputed from each tracking software is already 
 4. Usiigaci tracker tracked data
 
 	tracks.csv files are generated from the tracker. 
-	One can specify one file, or in the folder mode, the script will looks for all nested folders each containing a tracks.csv file and automated data analysis will be carried out on all the tracks.csv files. 
+	One can specify one file, or in the folder mode, the script will looks for all nested folders each containing a tracks.csv file and automated data analysis will be carried out on all the tracks.csv files. This will enable user to easily process large amount of data for cell analysis.
+
 	
 of all, since Lineage mapper and Metamorph only provide cell centroids data, the parameters regarding cell area, perimeter and orientation cannot be analyzed (despite error the analysis should still be done, just lack of data during data analysis and visualization in the notebook)
+
+#### Using the data analysis script
+1. install dependencies
+	```
+	pip install ipython numpy pandas scipy matplotlib seaborn imageio read_roi
+	```
+
+
+2. navigate to Usiigaci-master/DataAnalysis
+	edit the Data_analysis_script.py
+	or 
+	launch jupyter notebook in the folder and open the data_analysis ipynb
+
+3. edit the experimental details in the dataanalysis script
+	line 52 : number of frames
+	line 54 : time interval of the time lapse
+	line 58 : the folder path to your data
+	line 60 : what kind of data your are processing, single csv file, or multiple tracks.csv in nested folders. (note right now only usiigaci is supported)
+	line 62 : what kind of the data? from imageJ, metamorph, or usiigaci tracker.
+
+4. note the folder path definition under windows and under linux is slightly different.
+adjust if necessary 
+
 
 ## How to make your own training data and train them.
 We manually annotate training data  (phase contrast image acquired on Nikon Ti-E microscope with 10X Ph-1 objective and 1.5X intermediate magnification on Hamamatsu Orca Flash V4.0 with 2x2 binning) using opensource software Fiji ImageJ.
