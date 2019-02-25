@@ -61,7 +61,7 @@ We worked on Usiigaci for our work on cell electrotaxis study, and hopefully can
 We hope Usiigaci is interesting to you and if it is useful for your research.
 Currently, our paper is under peer review.
 ```
-Hsieh-Fu Tsai, Joanna Gajda, Tyler F.W. Sloan, Andrei Rares, and Amy Q. Shen, in revision
+Hsieh-Fu Tsai, Joanna Gajda, Tyler F.W. Sloan, Andrei Rares, and Amy Q. Shen, SoftwareX, Accepted, 2019
 ```
 But we've prepared a preprint deposited on BioRxiv if you want to read more on the details of Usiigaci.
 [Preprint](https://www.biorxiv.org/content/early/2019/01/18/524041)
