@@ -58,10 +58,11 @@ A Jupyter Notebook and the corresponding python script are developed for automat
 
 We worked on Usiigaci for our work on cell electrotaxis study, and hopefully can devote to current international effort to standardize cell migration experiments. 
 
-We hope Usiigaci is interesting to you and if it is useful for your research.
+We hope Usiigaci is interesting to you and if it is useful for your research, please cite our paper.
 ```
-Hsieh-Fu Tsai, Joanna Gajda, Tyler F.W. Sloan, Andrei Rares, and Amy Q. Shen, SoftwareX, Accepted, 2019
+Hsieh-Fu Tsai, Joanna Gajda, Tyler F.W. Sloan, Andrei Rares, and Amy Q. Shen, SoftwareX, 9, 230-237, 2019
 ```
+Accessible [here](http://dx.doi.org/10.1016/j.softx.2019.02.007)
 We had prepared a preprint deposited on BioRxiv if you want to read more on the details of Usiigaci.
 [Preprint](https://www.biorxiv.org/content/early/2019/01/18/524041)
 
@@ -130,6 +131,8 @@ But Usiigaci has been verified working on the following machines.
 1. Windows 10 64 bit on Alienware 15 with GTX 1070 8GB
 2. Linux 64 bit on Alienware 15 with GTX1070 8GB or with a GTX 1080Ti 11GB in an Alienware graphics amplifier
 3. Windows 7 64 bit on Dell Precision Workstation T7810 with Quadro M4000
+4. Ubuntu 16.04 on Dell Precision Workstation T7810 with Quadro M4000
+
 
 We see a high efficiency on running Usiigaci in a linux machine.
 
