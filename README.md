@@ -1,5 +1,5 @@
 # Usiigaci: Instance-aware cell tracking in stain-free phase contrast microscopy enabled by machine learning
-**Hsieh-Fu Tsai<sup>1,2</sup>, Joanna Gajda<sup>3</sup>, Tyler F.W. Sloan<sup>4</sup>, Andrei Rares<sup>5</sup>, and Amy Q. Shen<sup>1</sup>**
+**Hsieh-Fu Tsai<sup>1,2</sup>**, Joanna Gajda<sup>3</sup>, Tyler F.W. Sloan<sup>4</sup>, Andrei Rares<sup>5</sup>, Jason Ting-Chun Chou<sup>1</sup>, and Amy Q. Shen<sup>1</sup>**
 
 <sup><sup>1</sup>Micro/Bio/Nanofluidics Unit, Okinawa Institute of Science and Technology Graduate University, Okinawa Japan</sup>
 
@@ -62,9 +62,8 @@ We hope Usiigaci is interesting to you and if it is useful for your research, pl
 ```
 Hsieh-Fu Tsai, Joanna Gajda, Tyler F.W. Sloan, Andrei Rares, and Amy Q. Shen, SoftwareX, 9, 230-237, 2019
 ```
-Accessible [here](http://dx.doi.org/10.1016/j.softx.2019.02.007)
-We had prepared a preprint deposited on BioRxiv if you want to read more on the details of Usiigaci.
-[Preprint](https://www.biorxiv.org/content/early/2019/01/18/524041)
+
+Accessible  [here](http://dx.doi.org/10.1016/j.softx.2019.02.007)
 
 
 Usiigaci is released under MIT License. 
@@ -114,8 +113,16 @@ PyQtGraph is released under MIT license
 
 
 ## Future work
-- [ ] Add a function to find best model weight
+- [ ] Add a function to save only the best model weight during training (save on storage)
+- [ ] Add a function to compute F1 score, Jaccard index, Accurady, Precision during validation step of the training 
 - [ ] pretrain model weights for DIC microscopy.
+- [ ] pretrain model weights for recognition of nucleus
+- [ ] add bounding box as an output format (overlay over original image)
+- [ ] change output mask to 16 bit to support more instance to be recognized
+- [ ] Add support for ultra-long time series tracking
+- [ ] Add automated tracking scripts
+- [ ] Add data analysis script for specific time frame
+- [ ] plotly based data visualization for rare event analysis. 
 - [ ] Multiclass segmentation to realize identification of mitotic cells.
 - [ ] Multiclass segmentation to realize label-free co-cultured cell segmentation.
 
@@ -285,7 +292,7 @@ try it out with the inference script
 * Python 3.4+
 * Trackpy
 * Scipy
-* scikit-image
+* scikit-image==0.13
 * Numpy
 * Pandas
 * Matplotlib
@@ -368,7 +375,7 @@ The tracker is the work by Dr. Andrei Rares.
 ##### Prerequisite:
 1. install required packages
 	```
-	pip install pyqt5 trackpy pims pandas trackpy pillow imageio--ffmpeg
+	pip install pyqt5 pyqtgraph pims pandas trackpy pillow imageio--ffmpeg scikit-image==0.13
 	```
 
 	some times pillow nees to be upgraded 
