@@ -1,0 +1,6 @@
+Please take into account that you must set again "max_candidates = 12" in the beginning of the "numba_link()" function from the "subnetlinker.py" file from the Trackpy module, otherwise the first issue you reported to me will pop up again. The "subnetlinker.py" file can be found here:
+[PATH_TO_ANACONDA_ENVIRONMENT]/lib/python3.6/site-packages/trackpy/linking/subnetlinker.py
+
+
+Note: the new tracker has different dependencies than the old one.
+

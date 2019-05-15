@@ -1,5 +1,5 @@
 # Usiigaci: Instance-aware cell tracking in stain-free phase contrast microscopy enabled by machine learning
-**Hsieh-Fu Tsai<sup>1,2</sup>**, Joanna Gajda<sup>3</sup>, Tyler F.W. Sloan<sup>4</sup>, Andrei Rares<sup>5</sup>, Jason Ting-Chun Chou<sup>1</sup>, and Amy Q. Shen<sup>1</sup>**
+**Hsieh-Fu Tsai<sup>1,2</sup>, Joanna Gajda<sup>3</sup>, Tyler F.W. Sloan<sup>4</sup>, Andrei Rares<sup>5</sup>, Jason Ting-Chun Chou<sup>1</sup>, and Amy Q. Shen<sup>1</sup>**
 
 <sup><sup>1</sup>Micro/Bio/Nanofluidics Unit, Okinawa Institute of Science and Technology Graduate University, Okinawa Japan</sup>
 
@@ -113,18 +113,32 @@ PyQtGraph is released under MIT license
 
 
 ## Future work
+### Mask R-CNN segmentation
 - [ ] Add a function to save only the best model weight during training (save on storage)
 - [ ] Add a function to compute F1 score, Jaccard index, Accurady, Precision during validation step of the training 
 - [ ] pretrain model weights for DIC microscopy.
 - [ ] pretrain model weights for recognition of nucleus
 - [ ] add bounding box as an output format (overlay over original image)
 - [ ] change output mask to 16 bit to support more instance to be recognized
-- [ ] Add support for ultra-long time series tracking
-- [ ] Add automated tracking scripts
-- [ ] Add data analysis script for specific time frame
-- [ ] plotly based data visualization for rare event analysis. 
 - [ ] Multiclass segmentation to realize identification of mitotic cells.
 - [ ] Multiclass segmentation to realize label-free co-cultured cell segmentation.
+- [ ] Add multiple GPU training and inference support - likely need to rework the fundamentals.
+
+### Tracking
+- [ ] Add lineage tracking function
+- [x] Add support for ultra-long time series tracking
+- [x] Add batch tracking scripts
+
+### data processing
+- [x] Add data analysis script for specific time frame
+- [ ] Add output into rois for later use coupling imageJ (for users quantify the roi)
+- [ ] plotly based data visualization for rare event analysis. 
+- [ ] Add calculation of cell doubling time
+- [ ] Add rare event detection
+- [ ] Add confluency calculation
+- [ ] Faster more integrated data processing pipeline, perhaps on C++
+- [ ] Add cell contour vector analysis
+
 
 ## Acknowledgement:
 This work is supported by JSPS KAKENHI Grant JP1700362 and Okinawa Institute of Science and Technology Graduate University with subsidy funding from the Cabinet Office, Government of Japan. 
@@ -177,7 +191,7 @@ the driver will be installed when cuda is installed.
 	```
 	lspci | grep -i nvidia
 	```
-	* verfiy a supported version of linux
+	* verify a supported version of linux
 	```
 	uname -m && cat /etc/*-release
 	```

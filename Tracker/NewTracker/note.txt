@@ -1,0 +1,8 @@
+V2 Tracker features tracking more than 256 objects (limitation of 8bit). 
+
+However, the dependencies are different than Version 1 released with the publication.
+
+Troubleshoot installation dependencies with V2 tracker using the python-packages.txt
+
+Also batchtracking is not yet tested compatibility with V2 tracker, proceed with caution.
+
