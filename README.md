@@ -114,8 +114,8 @@ PyQtGraph is released under MIT license
 
 ## Future work
 ### Mask R-CNN segmentation
-- [ ] Add a function to save only the best model weight during training (save on storage)
-- [ ] Add a function to compute F1 score, Jaccard index, Accurady, Precision during validation step of the training 
+- [ ] Add a function to save only the best model weight during training
+- [ ] Add a function to compute F1 score, Jaccard index, Accurady, Precision to a test dataset after training
 - [ ] pretrain model weights for DIC microscopy.
 - [ ] pretrain model weights for recognition of nucleus
 - [ ] add bounding box as an output format (overlay over original image)
@@ -123,6 +123,7 @@ PyQtGraph is released under MIT license
 - [ ] Multiclass segmentation to realize identification of mitotic cells.
 - [ ] Multiclass segmentation to realize label-free co-cultured cell segmentation.
 - [ ] Add multiple GPU training and inference support - likely need to rework the fundamentals.
+- [ ] pretrain model weights for Atto cytowatcher microscope
 
 ### Tracking
 - [ ] Add lineage tracking function
@@ -138,6 +139,10 @@ PyQtGraph is released under MIT license
 - [ ] Add confluency calculation
 - [ ] Faster more integrated data processing pipeline, perhaps on C++
 - [ ] Add cell contour vector analysis
+
+## Call for collaboration
+We are still improving the software. If you'd like, please adapt the source code on your own dataset.
+If you are willing to share you dataset, we can try to annotate them and incorporate into training a pretrain model weight that you could use, please contact me. 
 
 
 ## Acknowledgement:
