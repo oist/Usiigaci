@@ -113,6 +113,8 @@ PyQtGraph is released under MIT license
 
 
 ## Future work
+(2019.Sep.01) We are working on a new architecture to become more light weight and flexible.
+
 ### Mask R-CNN segmentation
 - [ ] Add a function to save only the best model weight during training
 - [ ] Add a function to compute F1 score, Jaccard index, Accurady, Precision to a test dataset after training
@@ -124,6 +126,9 @@ PyQtGraph is released under MIT license
 - [ ] Multiclass segmentation to realize label-free co-cultured cell segmentation.
 - [ ] Add multiple GPU training and inference support - likely need to rework the fundamentals.
 - [ ] pretrain model weights for Atto cytowatcher microscope
+- [ ] Pretrain model weights for Essen Incucyte S3
+- [ ] Pretrain model weights for bacteria
+
 
 ### Tracking
 - [ ] Add lineage tracking function
@@ -132,18 +137,19 @@ PyQtGraph is released under MIT license
 
 ### data processing
 - [x] Add data analysis script for specific time frame
-- [ ] Add output into rois for later use coupling imageJ (for users quantify the roi)
+- [ ] Add output into rois for later use coupling imageJ (for users to quantify the roi)
 - [ ] plotly based data visualization for rare event analysis. 
 - [ ] Add calculation of cell doubling time
 - [ ] Add rare event detection
 - [ ] Add confluency calculation
 - [ ] Faster more integrated data processing pipeline, perhaps on C++
 - [ ] Add cell contour vector analysis
+- [ ] Add multiclass percent stacked bar plot. 
 
 ## Call for collaboration
 We are still improving the software. If you'd like, please adapt the source code on your own dataset.
-If you are willing to share you dataset, we can try to annotate them and incorporate into training a pretrain model weight that you could use, please contact me. 
-
+If you are willing to share you dataset, but limited by computing power, we can initiate collaboration. We can try to annotate your data and train a model weight for your data or incorporate your data together with our dataset that you can use. 
+If interested, please contact to the corresponding authors. 
 
 ## Acknowledgement:
 This work is supported by JSPS KAKENHI Grant JP1700362 and Okinawa Institute of Science and Technology Graduate University with subsidy funding from the Cabinet Office, Government of Japan. 
@@ -511,6 +517,23 @@ We manually annotate training data  (phase contrast image acquired on Nikon Ti-E
 3. run the preprocess_data.py to change the colored into gray scale 8 bit image. 
 	Alternatively, if you already have the 8 bit gray scale image with each cell having its index. you're good to go by naming them as "instance_ids.png"
 
+4. run the train.py 
+
+	several variables to keep in mind
+	line 22 input channel should be your training data channel filename
+	line 29: IMAGES_PER_GPU, adjust according to your GPU memory
+	line 31: In my system, it is essential two classes training keep it 2. Multiclass is not tested yet. 
+	line 33: STEPS_PER_EPOCH, put in the number of your training data
+	line 34: VALIDATION_STEP, put in the number of your validation data
+
+	for the rest of parameters, you can play around.
+	If your image is of high intensity or low intensity, you might have to adjust MEAN_PIXEL on line 71 to the np.array of the mean of RGB of the image. 
+
+	Adjust the training epochs for the heads and all layers on line 188 and 196.
+	modify the path to train_dir, val_dir, out_dir, and pretrained weight to start. from line 211-217
+
+	in some cases if tensorflow-gpu takes alot of cpu time and lags your system, you might want to go into the model.py and find multiprocessing and set it to False.
+	 
 
 We used 50 sets of training data. you can find the training data we made in the train and val folder.
 45 sets are used in training and 5 sets are for validation. We trained additional 200 epochs of headers and 300 epochs on all layers based on a trained network from Matterport with MS COCO dataset. 
